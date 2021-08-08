@@ -1,4 +1,5 @@
 from jogador import Jogador
+from camera import Camera
 import pygame
 
 pygame.init()
@@ -13,6 +14,7 @@ clock = pygame.time.Clock()
 pygame.display.set_caption("√ Variável")
 
 jogador = Jogador()
+camera = Camera(jogador)
 
 while running:
     clock.tick(60)
@@ -21,10 +23,11 @@ while running:
         if event.type == pygame.QUIT:
             running = False
     
-    jogador.update()
+    jogador.update(camera.offset.x)
+    camera.scroll()
     
-    canvas.blit(background, (0,0))
-    canvas.blit(jogador.superficie, jogador.rect)
+    canvas.blit(background, (-camera.offset.x, 0))
+    canvas.blit(jogador.superficie, (jogador.rect.x - camera.offset.x, jogador.rect.y))
     window.blit(canvas,(0,0))
 
     pygame.display.update()
