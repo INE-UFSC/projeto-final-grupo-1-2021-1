@@ -1,5 +1,6 @@
 from jogador import Jogador
 from camera import Camera
+from pilula import Pilula
 import pygame
 
 pygame.init()
@@ -15,6 +16,12 @@ pygame.display.set_caption("√ Variável")
 
 jogador = Jogador()
 camera = Camera(jogador)
+pilula = Pilula('Red', 2, False, 200, 450)
+pilula2 = Pilula('Red', 2, False, 50, 450)
+pilula3 = Pilula('Red', 2, False, 3000, 450)
+
+pilula_grupo = pygame.sprite.Group()
+pilula_grupo.add(pilula, pilula2, pilula3)
 
 while running:
     clock.tick(60)
@@ -22,12 +29,16 @@ while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
-    
+
     jogador.update(camera.offset.x)
     camera.scroll()
-    
+
+    if pygame.sprite.spritecollide(jogador, pilula_grupo, True):
+        background = pygame.image.load('images/fase.png').convert()
+
     canvas.blit(background, (-camera.offset.x, 0))
     canvas.blit(jogador.superficie, (jogador.rect.x - camera.offset.x, jogador.rect.y))
-    window.blit(canvas,(0,0))
+    pilula_grupo.draw(background)
+    window.blit(canvas,(0, 0))
 
     pygame.display.update()
