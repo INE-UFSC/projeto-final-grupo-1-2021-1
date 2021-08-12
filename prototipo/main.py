@@ -16,12 +16,21 @@ pygame.display.set_caption("√ Variável")
 
 jogador = Jogador()
 camera = Camera(jogador)
-pilula = Pilula('red', 10, False, 200, 450)
-pilula2 = Pilula('blue', -10, False, 50, 450)
-pilula3 = Pilula('green', 2, True, 3000, 450)
+
+pilulas = [
+    Pilula('blue', -10, False, 500, 450),
+    Pilula('green', -10, True, 600, 450),
+    Pilula('red', 10, False, 700, 450),
+    Pilula('blue', -10, False, 800, 450),
+    Pilula('red', 10, False, 900, 450),
+    Pilula('blue', -10, False, 1000, 450),
+    Pilula('red', 10, False, 1100, 450),
+    Pilula('blue', -10, False, 50, 450),
+    Pilula('green', 2, True, 3000, 450),
+]
 
 pilula_grupo = pygame.sprite.Group()
-pilula_grupo.add(pilula, pilula2, pilula3)
+pilula_grupo.add(pilulas)
 
 while running:
     clock.tick(60)
