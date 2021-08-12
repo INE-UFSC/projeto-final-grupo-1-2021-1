@@ -1,6 +1,4 @@
 import pygame
-from pygame.locals import *
-
 
 class Pilula(pygame.sprite.Sprite):
     def __init__(self, cor, efeito, reseta_tamanho, x, y):
