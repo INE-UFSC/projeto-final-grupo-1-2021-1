@@ -1,10 +1,11 @@
 import pygame
+import constantes as c
 
 class Jogador:
   def __init__(self):
-    self.tamanho = 100
-    self.x = 400 - self.tamanho
-    self.y = 500 - 30 - self.tamanho
+    self.tamanho = c.tamanho_inicial_jogador
+    self.x = c.largura_tela/2 - self.tamanho
+    self.y = c.altura_tela - 30 - self.tamanho
     self.pulo = 0
     self.superficie = pygame.Surface((self.tamanho, self.tamanho))
     self.superficie.fill('Purple')
