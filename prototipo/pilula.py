@@ -10,10 +10,7 @@ class Pilula(pygame.sprite.Sprite):
         self.reseta_tamanho = reseta_tamanho
         self.x = x
         self.y = y
-        self.superficie = pygame.Surface((20, 20))
-        self.superficie.fill(self.cor)
-        self.rect = self.superficie.get_rect(bottomleft = (self.x, self.y))
-        img = pygame.image.load('images/pilula_verm.png')
+        img = pygame.image.load(f'images/pilula_{self.cor}.png')
         self.image = pygame.transform.scale(img, (28 , 34))
         self.rect = self.image.get_rect()
         self.rect.center = (x, y)
