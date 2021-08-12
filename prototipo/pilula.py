@@ -9,7 +9,7 @@ class Pilula(pygame.sprite.Sprite):
         self.x = x
         self.y = y
         img = pygame.image.load(f'images/pilula_{self.cor}.png')
-        self.image = pygame.transform.scale(img, (28 , 34))
+        self.image = pygame.transform.scale(img, (29 , 34))
         self.rect = self.image.get_rect()
         self.rect.center = (x, y)
 
