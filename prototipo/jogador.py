@@ -13,6 +13,7 @@ class Jogador:
     self.tamanho_min = 10
     self.tamanho_max = 100
     self.tamanho_pulo = (15*self.tamanho - 2400)/90
+    self.pulou = False
     self.velocidade = -(self.tamanho_pulo/3)
   
   def andar(self, direcao, borda):
@@ -29,21 +30,54 @@ class Jogador:
     if self.rect.y == self.y:
       self.pulo = self.tamanho_pulo
     
-  def update(self, borda):
-    self.pulo += 1
-    self.rect.y += self.pulo
-
-    if self.rect.y >= self.y:
-        self.rect.y = self.y
+  def update(self, borda, caixas):
+    dx = 0
+    dy = 0
     
     keys = pygame.key.get_pressed()
 
     if keys[pygame.K_d]:
-      self.andar('direita', borda), 
+      dx += 5
     if keys[pygame.K_a]:
-      self.andar('esquerda', borda)
-    if keys[pygame.K_w]:
-      self.pular()
+      dx -= 5
+    if keys[pygame.K_w] and not self.pulou:
+      self.pulo = self.tamanho_pulo
+      self.pulou = True
+
+    self.pulo += 1
+    if self.pulo > 10:
+      self.pulo = 10
+
+    dy += self.pulo
+
+    for caixa in caixas:
+      #check for collision in x direction
+      if caixa.rect.colliderect(self.rect.x + dx, self.rect.y, self.tamanho, self.tamanho):
+        dx = 0
+        if self.tamanho > caixa.forca_necessaria:
+          caixas.remove(caixa)
+      #check for collision in y direction
+      if caixa.rect.colliderect(self.rect.x, self.rect.y + dy, self.tamanho, self.tamanho):
+        #check if below the ground i.e. jumping
+        if self.pulo < 0:
+            dy = caixa.rect.bottom - self.rect.top
+            self.pulo = 0
+        #check if above the ground i.e. falling
+        elif self.pulo >= 0:
+            dy = caixa.rect.top - self.rect.bottom
+            self.pulo = 0
+            self.pulou = False
+
+    self.rect.x += dx
+    self.rect.y += dy
+
+    if self.rect.y > self.y:
+      self.rect.y = self.y
+      self.pulou = False
+    if self.rect.x < borda:
+      self.rect.x = borda
+    if self.rect.x > 3075 - self.tamanho:
+      self.rect.x = 3075 - self.tamanho
 
   def toma_pilula(self, pilulas):
       pilulas_tomadas = pygame.sprite.spritecollide(self, pilulas, True)
@@ -72,4 +106,7 @@ class Jogador:
   
   def mudar_velocidade(self):
     self.velocidade = -(self.tamanho_pulo/3)
+
+  def reset(self):
+    self.__init__()
     

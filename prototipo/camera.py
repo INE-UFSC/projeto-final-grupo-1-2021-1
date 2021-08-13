@@ -12,4 +12,7 @@ class Camera:
       if self.player.rect.x > self.posicao_antiga:
         self.offset.x = self.player.rect.x - self.DISPLAY_W/2 + self.player.tamanho
         self.posicao_antiga = self.player.rect.x
+
+    def reset(self):
+      self.__init__(self.player)
   
