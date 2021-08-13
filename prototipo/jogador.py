@@ -4,7 +4,7 @@ import constantes as c
 class Jogador:
   def __init__(self):
     self.tamanho = c.tamanho_inicial_jogador
-    self.x = c.largura_tela/2 - self.tamanho
+    self.x = c.largura_tela/2 - self.tamanho/2
     self.y = c.altura_tela - 30 - self.tamanho
     self.pulo = 0
     self.superficie = pygame.Surface((self.tamanho, self.tamanho))
@@ -30,7 +30,7 @@ class Jogador:
     if self.rect.y == self.y:
       self.pulo = self.tamanho_pulo
     
-  def update(self, borda, caixas):
+  def update(self, caixas, pilulas):
     dx = 0
     dy = 0
     
@@ -51,41 +51,43 @@ class Jogador:
     dy += self.pulo
 
     for caixa in caixas:
-      #check for collision in x direction
+      #Colisão no eixo x
       if caixa.rect.colliderect(self.rect.x + dx, self.rect.y, self.tamanho, self.tamanho):
         dx = 0
         if self.tamanho > caixa.forca_necessaria:
           caixas.remove(caixa)
-      #check for collision in y direction
+      #Colisão no eixo y
       if caixa.rect.colliderect(self.rect.x, self.rect.y + dy, self.tamanho, self.tamanho):
-        #check if below the ground i.e. jumping
+        #Colisão quando está pulando
         if self.pulo < 0:
             dy = caixa.rect.bottom - self.rect.top
             self.pulo = 0
-        #check if above the ground i.e. falling
+        #Colisão quando está caindo
         elif self.pulo >= 0:
             dy = caixa.rect.top - self.rect.bottom
             self.pulo = 0
             self.pulou = False
+    
+    for pilula in pilulas:
+      if pilula.rect.colliderect(self.rect.x + dx, self.rect.y + dy, self.tamanho, self.tamanho):
+        self.toma_pilula(pilula)
+        pilulas.remove(pilula)
 
     self.rect.x += dx
     self.rect.y += dy
 
+
     if self.rect.y > self.y:
       self.rect.y = self.y
       self.pulou = False
-    if self.rect.x < borda:
-      self.rect.x = borda
     if self.rect.x > 3075 - self.tamanho:
       self.rect.x = 3075 - self.tamanho
 
-  def toma_pilula(self, pilulas):
-      pilulas_tomadas = pygame.sprite.spritecollide(self, pilulas, True)
-      for pilula in pilulas_tomadas:
-        if pilula.reseta_tamanho:
-          self.mudar_tamanho(True)
-        else:
-          self.mudar_tamanho(False, pilula.efeito)
+  def toma_pilula(self, pilula):
+      if pilula.reseta_tamanho:
+        self.mudar_tamanho(True)
+      else:
+        self.mudar_tamanho(False, pilula.efeito)
         
       self.mudar_velocidade()
         
@@ -98,10 +100,10 @@ class Jogador:
     else:
       self.tamanho += tamanho
 
+    self.y = c.altura_tela - 30 - self.tamanho
     self.superficie = pygame.Surface((self.tamanho, self.tamanho))
-    self.rect = self.superficie.get_rect(bottomleft = (self.rect.x, self.rect.y))
+    self.rect = self.superficie.get_rect(bottomleft = (self.rect.x, self.y + self.tamanho))
     self.superficie.fill('Purple')
-    self.y = 500 - 30 - self.tamanho
     self.tamanho_pulo = (15*self.tamanho - 2400)/90
   
   def mudar_velocidade(self):
