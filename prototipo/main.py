@@ -67,7 +67,7 @@ while running:
         if event.type == pygame.QUIT:
             running = False
 
-    jogador.update(camera.offset.x, caixa_grupo)
+    jogador.update(camera.borda, caixa_grupo)
     camera.scroll()
     for inimigo in inimigo_grupo:
         inimigo.andar()
