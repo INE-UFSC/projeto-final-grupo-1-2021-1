@@ -33,7 +33,11 @@ inimigos = [
 
 pilulas = [
     Pilula('red', 10, False, 500, 450),
-    Pilula('green', 2, True, 200, 450),
+    Pilula('blue',-10, False, 350, 450),
+    Pilula('green',-10, True, 250, 450),
+    Pilula('blue',-10, False, 200, 450),
+    Pilula('red', 10, False, 575, 190),
+    Pilula('red', 10, False, 575, 10),
 ]
 
 pilula_grupo = pygame.sprite.Group()

@@ -102,7 +102,7 @@ class Jogador:
 
     self.y = c.altura_tela - 30 - self.tamanho
     self.superficie = pygame.Surface((self.tamanho, self.tamanho))
-    self.rect = self.superficie.get_rect(bottomleft = (self.rect.x, self.y + self.tamanho))
+    self.rect = self.superficie.get_rect(bottomleft = (self.rect.x, self.rect.y + self.tamanho))
     self.superficie.fill('Purple')
     self.tamanho_pulo = (15*self.tamanho - 2400)/90
   
