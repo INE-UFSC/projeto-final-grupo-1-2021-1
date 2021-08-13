@@ -10,7 +10,7 @@ import pygame
 pygame.init()
 ALTURA, LARGURA = 500, 800
 tamanho_jogador = 50
-canvas = pygame.Surface((LARGURA, ALTURA))
+canvas = pygame.Surface((3075, 500))
 window = pygame.display.set_mode((LARGURA, ALTURA))
 running = True
 background = pygame.image.load('images/fase.png').convert()
@@ -81,11 +81,11 @@ while running:
         print("Morreu")
         
 
-    canvas.blit(background, (-camera.offset.x, 0))
-    canvas.blit(jogador.superficie, (jogador.rect.x - camera.offset.x, jogador.rect.y))
-    pilula_grupo.draw(background)
-    inimigo_grupo.draw(background)
-    caixa_grupo.draw(background)
-    window.blit(canvas,(0, 0))
+    canvas.blit(background, (0, 0))
+    canvas.blit(jogador.superficie, (jogador.rect.x, jogador.rect.y))
+    pilula_grupo.draw(canvas)
+    inimigo_grupo.draw(canvas)
+    caixa_grupo.draw(canvas)
+    window.blit(canvas,(camera.offset.x, 0))
 
     pygame.display.update()
