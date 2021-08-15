@@ -6,7 +6,7 @@ class InimigoVermelho(Inimigo):
         super().__init__(cor, velocidade, largura, altura, x, y, distancia_maxima)
         self.pulo = pulo
 
-    def andar(self):
+    def update(self):
         self.pulo += 1
         if self.pulo > 10:
             self.pulo = 10

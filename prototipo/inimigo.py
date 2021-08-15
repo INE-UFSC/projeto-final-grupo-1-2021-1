@@ -18,6 +18,6 @@ class Inimigo(ABC, pygame.sprite.Sprite):
         self.distancia = 0
 
     @abstractmethod
-    def andar(self):
+    def update(self):
         pass
 
