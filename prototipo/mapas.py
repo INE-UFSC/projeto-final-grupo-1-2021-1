@@ -40,7 +40,7 @@ blocos_nivel_1 = [
     Bloco(50, 50, 2280, 420)
 
 ]
-bandeirinha_nivel_1 = Bandeirinha(3070, 470)
+bandeirinha_nivel_1 = Bandeirinha(2600, 470)
 bandeirinha_nivel_2 = Bandeirinha(600, 470)
 
 background_nivel_2 = 'images/fase2.png'
