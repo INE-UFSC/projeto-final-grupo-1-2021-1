@@ -30,7 +30,7 @@ class Jogador:
     if self.rect.y == self.y:
       self.pulo = self.tamanho_pulo
     
-  def update(self, caixas, pilulas):
+  def update(self, caixas, pilulas, blocos):
     dx = 0
     dy = 0
     
@@ -65,6 +65,22 @@ class Jogador:
         #Colisão quando está caindo
         elif self.pulo >= 0:
             dy = caixa.rect.top - self.rect.bottom
+            self.pulo = 0
+            self.pulou = False
+    
+    for bloco in blocos:
+      #Colisão no eixo x
+      if bloco.rect.colliderect(self.rect.x + dx, self.rect.y, self.tamanho, self.tamanho):
+        dx = 0
+      #Colisão no eixo y
+      if bloco.rect.colliderect(self.rect.x, self.rect.y + dy, self.tamanho, self.tamanho):
+        #Colisão quando está pulando
+        if self.pulo < 0:
+            dy = bloco.rect.bottom - self.rect.top
+            self.pulo = 0
+        #Colisão quando está caindo
+        elif self.pulo >= 0:
+            dy = bloco.rect.top - self.rect.bottom
             self.pulo = 0
             self.pulou = False
     

@@ -2,19 +2,22 @@ import pygame
 from camera import Camera
 
 class Nivel:
-  def __init__(self, background, pilulas = [], caixas = [], inimigos = []):
+  def __init__(self, background, pilulas = [], caixas = [], inimigos = [], blocos = []):
     self.pilulas = pilulas
     self.caixas = caixas
     self.inimigos = inimigos
+    self.blocos = blocos
     self.background = pygame.image.load(background).convert()
 
     self.grupo_pilulas = pygame.sprite.Group()
     self.grupo_caixas= pygame.sprite.Group()
     self.grupo_inimigos = pygame.sprite.Group()
+    self.grupo_blocos = pygame.sprite.Group()
 
     self.grupo_pilulas.add(self.pilulas)
     self.grupo_caixas.add(self.caixas)
     self.grupo_inimigos.add(self.inimigos)
+    self.grupo_blocos.add(self.blocos)
   
   def inserir_jogador(self, jogador):
     self.jogador = jogador
@@ -24,16 +27,18 @@ class Nivel:
     self.grupo_pilulas.empty()
     self.grupo_caixas.empty()
     self.grupo_inimigos.empty()
+    self.grupo_blocos.empty()
 
     self.grupo_pilulas.add(self.pilulas)
     self.grupo_caixas.add(self.caixas)
     self.grupo_inimigos.add(self.inimigos)
+    self.grupo_blocos.add(self.blocos)
 
     self.jogador.reset()
     self.camera.reset()
   
   def update(self, screen):
-    self.jogador.update(self.grupo_caixas, self.grupo_pilulas)
+    self.jogador.update(self.grupo_caixas, self.grupo_pilulas, self.grupo_blocos)
     self.camera.scroll()
 
     self.grupo_inimigos.update()
@@ -47,3 +52,4 @@ class Nivel:
     self.grupo_pilulas.draw(screen)
     self.grupo_inimigos.draw(screen)
     self.grupo_caixas.draw(screen)
+    self.grupo_blocos.draw(screen)

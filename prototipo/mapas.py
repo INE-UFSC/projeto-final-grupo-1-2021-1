@@ -1,6 +1,7 @@
 import pygame
 from pilula import Pilula
 from caixa import Caixa
+from bloco import Bloco
 from inimigoVermelho import InimigoVermelho
 from inimigoLaranja import InimigoLaranja
 from nivel import Nivel
@@ -29,7 +30,12 @@ pilulas_nivel_1 = [
     Pilula('red', 10, False, 575, 10),
 ]
 
-nivel_1 = Nivel(background_nivel_1, pilulas_nivel_1, caixas_nivel_1, inimigos_nivel_1)
+blocos_nivel_1 = [
+    Bloco(50, 50, 1000, 470 )
+
+]
+
+nivel_1 = Nivel(background_nivel_1, pilulas_nivel_1, caixas_nivel_1, inimigos_nivel_1, blocos_nivel_1)
 nivel_2 = Nivel(background_nivel_1)
 
 niveis = [nivel_1, nivel_2]
