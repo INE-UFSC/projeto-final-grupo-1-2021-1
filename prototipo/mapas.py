@@ -11,7 +11,7 @@ pygame.init()
 pygame.display.set_caption("√ Variável")
 tela_principal = pygame.display.set_mode((c.largura_tela, c.altura_tela))
 
-background_nivel_1 = 'images/fase.png'
+background_nivel_1 = 'images/fase1.png'
 caixas_nivel_1 = [
     Caixa(50, 50, 550, 470, 40),
     Caixa(50, 50, 550, 250, 40),
@@ -35,7 +35,9 @@ blocos_nivel_1 = [
 
 ]
 
+background_nivel_2 = 'images/fase2.png'
+
 nivel_1 = Nivel(background_nivel_1, pilulas_nivel_1, caixas_nivel_1, inimigos_nivel_1, blocos_nivel_1)
-nivel_2 = Nivel(background_nivel_1)
+nivel_2 = Nivel(background_nivel_2)
 
 niveis = [nivel_1, nivel_2]
