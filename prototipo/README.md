@@ -7,7 +7,6 @@
 ## Comandos para iniciar jogatina
 Na pasta do projeto utilize a linha de comando para iniciar o jogo. O arquivo principal é o main.py.
 Exemplo:
-cmd
 ```
 python3 main.py
 ```
