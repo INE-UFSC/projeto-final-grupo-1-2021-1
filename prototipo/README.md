@@ -7,9 +7,9 @@
 ## Comandos para iniciar jogatina
 Na pasta do projeto utilize a linha de comando para iniciar o jogo. O arquivo principal é o main.py.
 Exemplo:
-cmd'''
+cmd```
 python3 main.py
-'''
+```
 
 ## Como jogar
 O jogador se movimenta usando as teclas A, W, D, respectivamente esquerda, pulo e direita.
