@@ -15,6 +15,13 @@ class ControladorJogo:
 
     for nivel in self.niveis:
       nivel.inserir_jogador(self.jogador)
+
+  def passar_nivel(self):
+    self.index_nivel_atual += 1
+    if self.index_nivel_atual == len(self.niveis):
+      self.index_nivel_atual = 0
+    self.nivel = self.niveis[self.index_nivel_atual]
+    self.nivel.reset()
   
   def iniciar(self):
     while self.running:
@@ -27,11 +34,11 @@ class ControladorJogo:
           #Passa de nível quando aperta-se k, é obviamente provisório, só para ver se funciona
           if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_k:
-              self.index_nivel_atual += 1
-              if self.index_nivel_atual == len(self.niveis):
-                self.index_nivel_atual = 0
-              self.nivel = self.niveis[self.index_nivel_atual]
-              self.nivel.reset()
+              self.passar_nivel()
+
+      if self.nivel.bandeirinha.rect.colliderect(self.jogador.rect.x , self.jogador.rect.y , self.jogador.tamanho, self.jogador.tamanho):
+        self.passar_nivel()
+
       
       self.nivel.update(self.canvas)
       self.tela.blit(self.canvas,(self.nivel.camera.offset.x, 0))

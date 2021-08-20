@@ -2,22 +2,25 @@ import pygame
 from camera import Camera
 
 class Nivel:
-  def __init__(self, background, pilulas = [], caixas = [], inimigos = [], blocos = []):
+  def __init__(self, background, bandeirinha, pilulas = [], caixas = [], inimigos = [], blocos = []):
     self.pilulas = pilulas
     self.caixas = caixas
     self.inimigos = inimigos
     self.blocos = blocos
+    self.bandeirinha = bandeirinha
     self.background = pygame.image.load(background).convert()
 
     self.grupo_pilulas = pygame.sprite.Group()
     self.grupo_caixas= pygame.sprite.Group()
     self.grupo_inimigos = pygame.sprite.Group()
     self.grupo_blocos = pygame.sprite.Group()
+    self.grupo_bandeirinha = pygame.sprite.Group()
 
     self.grupo_pilulas.add(self.pilulas)
     self.grupo_caixas.add(self.caixas)
     self.grupo_inimigos.add(self.inimigos)
     self.grupo_blocos.add(self.blocos)
+    self.grupo_bandeirinha.add(self.bandeirinha)
   
   def inserir_jogador(self, jogador):
     self.jogador = jogador
@@ -53,3 +56,4 @@ class Nivel:
     self.grupo_inimigos.draw(screen)
     self.grupo_caixas.draw(screen)
     self.grupo_blocos.draw(screen)
+    self.grupo_bandeirinha.draw(screen)

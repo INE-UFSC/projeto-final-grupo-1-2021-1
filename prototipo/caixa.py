@@ -1,5 +1,4 @@
 import pygame
-from pygame.constants import BUTTON_LEFT
 
 class Caixa(pygame.sprite.Sprite):
     def __init__(self, altura: int, largura: int, x, y, forca_necessaria):

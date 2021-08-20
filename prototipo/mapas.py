@@ -1,3 +1,4 @@
+from bandeirinha import Bandeirinha
 import pygame
 from pilula import Pilula
 from caixa import Caixa
@@ -39,10 +40,12 @@ blocos_nivel_1 = [
     Bloco(50, 50, 2280, 420)
 
 ]
+bandeirinha_nivel_1 = Bandeirinha(3070, 470)
+bandeirinha_nivel_2 = Bandeirinha(600, 470)
 
 background_nivel_2 = 'images/fase2.png'
 
-nivel_1 = Nivel(background_nivel_1, pilulas_nivel_1, caixas_nivel_1, inimigos_nivel_1, blocos_nivel_1)
-nivel_2 = Nivel(background_nivel_2)
+nivel_1 = Nivel(background_nivel_1, bandeirinha_nivel_1, pilulas_nivel_1, caixas_nivel_1, inimigos_nivel_1, blocos_nivel_1)
+nivel_2 = Nivel(background_nivel_2, bandeirinha_nivel_2)
 
 niveis = [nivel_1, nivel_2]
