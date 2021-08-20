@@ -1,3 +1,19 @@
-Nesse diretório, o grupo irá trabalhar em cima do primeiro protótipo do jogo.
+# Protótipo do Jogo
 
-A ideia do protótipo não é que ele seja uma versão demo do jogo completo, mas sim que o principal mecanismo do jogo esteja implementado com certo grau de sucesso. Exemplo: em um jogo do tipo plataforma 2D, basta mostrar um retângulo colidindo com objetos e saltando/destruindo com alguma comando do usuário. A interface gráfica (com sprites) é opcional nessa etapa.
+## Requisitos
+- Python
+- Pygame
+
+## Comandos para iniciar jogatina
+Na pasta do projeto utilize a linha de comando para iniciar o jogo. O arquivo principal é o main.py.
+Exemplo:
+cmd'''
+python3 main.py
+'''
+
+## Como jogar
+O jogador se movimenta usando as teclas A, W, D, respectivamente esquerda, pulo e direita.
+Como se trata de uma demo, a fim de possibilitar o teste para o mecanismo de passagem de níveis, é possível pressionar a tecla K para alternar entre os níveis disponíveis.
+
+## Observações
+Durante o desenvolvimento se notou um baixo desempenho em MacBooks, o motivo ainda é desconhecido.
