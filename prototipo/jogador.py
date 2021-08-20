@@ -15,16 +15,7 @@ class Jogador:
     self.tamanho_pulo = (15*self.tamanho - 2400)/90
     self.pulou = False
     self.velocidade = -(self.tamanho_pulo/3)
-  
-  def andar(self, direcao, borda):
-    if direcao == 'direita':
-      self.rect.x += self.velocidade
-    elif direcao == 'esquerda':
-      self.rect.x -= self.velocidade
-    if self.rect.x < borda:
-      self.rect.x = borda
-    if self.rect.x > 3075 - self.tamanho:
-      self.rect.x = 3075 - self.tamanho
+
 
   def pular(self):
     if self.rect.y == self.y:
