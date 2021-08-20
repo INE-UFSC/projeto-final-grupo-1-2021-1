@@ -13,25 +13,30 @@ tela_principal = pygame.display.set_mode((c.largura_tela, c.altura_tela))
 
 background_nivel_1 = 'images/fase1.png'
 caixas_nivel_1 = [
-    Caixa(50, 50, 550, 470, 40),
-    Caixa(50, 50, 550, 250, 40),
-    Caixa(200, 60, 1150, 470, 500)
+    Caixa(150, 50, 1900, 470, 100),
+    Caixa(50, 50, 2230, 470, 40),
 ]
 inimigos_nivel_1 = [
-    InimigoVermelho(600, 470),
-    InimigoLaranja(100, 470)
+    InimigoVermelho(700, 470),
+    InimigoVermelho(2675, 470),
+    InimigoLaranja(1535, 470)
 ]
 pilulas_nivel_1 = [
-    Pilula('red', 10, False, 500, 450),
-    Pilula('blue',-10, False, 350, 450),
-    Pilula('green',-10, True, 250, 450),
-    Pilula('blue',-10, False, 200, 450),
-    Pilula('red', 10, False, 575, 190),
-    Pilula('red', 10, False, 575, 10),
+    Pilula('red', 10, False, 675, 450),
+    Pilula('blue',-10, False, 866, 250),
+    Pilula('blue',-10, False, 1482, 430),
+    Pilula('green',-10, True, 1918, 290),
+    Pilula('red', 10, False, 2385, 450),
 ]
 
 blocos_nivel_1 = [
-    Bloco(50, 50, 1000, 470 )
+    Bloco(50, 50, 807, 255),
+    Bloco(50, 50, 891, 255),
+    Bloco(50, 50, 1036, 470),
+    Bloco(100, 50, 1086, 470),
+    Bloco(100, 50, 1150, 470),
+    Bloco(50, 50, 1200, 470),
+    Bloco(50, 50, 2280, 420)
 
 ]
 
