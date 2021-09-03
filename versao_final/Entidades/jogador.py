@@ -87,8 +87,8 @@ class Jogador:
     if self.rect.y > self.y:
       self.rect.y = self.y
       self.pulou = False
-    if self.rect.x > 3075 - self.tamanho:
-      self.rect.x = 3075 - self.tamanho
+    if self.rect.x > c.largura_background - self.tamanho:
+      self.rect.x = c.largura_background - self.tamanho
 
   def toma_pilula(self, pilula):
       if pilula.reseta_tamanho:

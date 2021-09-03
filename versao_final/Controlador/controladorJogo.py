@@ -11,7 +11,7 @@ class ControladorJogo:
     self.tela = tela
     self.running = True
     self.relogio = pygame.time.Clock()
-    self.canvas = pygame.Surface((3075, 500))
+    self.canvas = pygame.Surface((c.largura_background, c.altura_background))
 
     for nivel in self.niveis:
       nivel.inserir_jogador(self.jogador)

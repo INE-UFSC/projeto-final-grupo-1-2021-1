@@ -13,7 +13,9 @@ pygame.init()
 pygame.display.set_caption("√ Variável")
 tela_principal = pygame.display.set_mode((c.largura_tela, c.altura_tela))
 
+#fase1
 background_nivel_1 = 'images/fase1.png'
+bandeirinha_nivel_1 = Bandeirinha(c.bandeirinha, 470)
 caixas_nivel_1 = [
     Caixa(150, 50, 1900, 470, 100),
     Caixa(50, 50, 2230, 470, 40),
@@ -46,13 +48,16 @@ botoes = [
     Botao(754,0,'images/restart.png')
 ]
 
-bandeirinha_nivel_1 = Bandeirinha(2600, 470)
-bandeirinha_nivel_2 = Bandeirinha(600, 470)
-
+#fase2
+bandeirinha_nivel_2 = Bandeirinha(c.bandeirinha, 470)
 background_nivel_2 = 'images/fase2.png'
 
+#fase3
+bandeirinha_nivel_3 = Bandeirinha(c.bandeirinha, 470)
+background_nivel_3 = 'images/fase3.png'
 
 nivel_1 = Nivel(background_nivel_1, bandeirinha_nivel_1, pilulas_nivel_1, caixas_nivel_1, inimigos_nivel_1, blocos_nivel_1, botoes= botoes)
 nivel_2 = Nivel(background_nivel_2, bandeirinha_nivel_2, botoes= botoes)
+nivel_3 = Nivel(background_nivel_3, bandeirinha_nivel_3)
 
-niveis = [nivel_1, nivel_2]
+niveis = [nivel_1, nivel_2, nivel_3]
