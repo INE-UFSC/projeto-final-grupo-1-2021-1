@@ -9,7 +9,7 @@ class Nivel:
     self.__inimigos = inimigos
     self.__blocos = blocos
     self.__bandeirinha = bandeirinha
-    self.__botoes = [Botao(754,0,'images/restart.png')]
+    self.__botao_reset = Botao(754,0,'images/restart.png')
     self.__background = pygame.image.load(background).convert()
 
     self.__grupo_pilulas = pygame.sprite.Group()
@@ -24,7 +24,7 @@ class Nivel:
     self.__grupo_inimigos.add(self.__inimigos)
     self.__grupo_blocos.add(self.__blocos)
     self.__grupo_bandeirinha.add(self.__bandeirinha)
-    self.__grupo_botoes.add(self.__botoes)
+    self.__grupo_botoes.add(self.__botao_reset)
   
   @property
   def bandeirinha(self):
@@ -49,7 +49,7 @@ class Nivel:
     self.__grupo_caixas.add(self.__caixas)
     self.__grupo_inimigos.add(self.__inimigos)
     self.__grupo_blocos.add(self.__blocos)
-    self.__grupo_botoes.add(self.__botoes)
+    self.__grupo_botoes.add(self.__botao_reset)
 
     self.__jogador.reset()
     self.__camera.reset()
@@ -64,11 +64,13 @@ class Nivel:
     if pygame.sprite.spritecollide(self.__jogador, self.__grupo_inimigos, False):
       self.reset()
     
+    if self.__bandeirinha.rect.colliderect(self.__jogador.rect.x , self.__jogador.rect.y , self.__jogador.tamanho, self.__jogador.tamanho):
+      return True # Jogador concluiu nível
+    
     screen.blit(self.__background, (0, 0))
     screen.blit(self.__jogador.superficie, (self.__jogador.rect.x, self.__jogador.rect.y))
-
     
-    if self.__botoes[0].interage() == True: #tenho que descobrir uma forma de deixar essa linha melhor e utilizável para mais botões
+    if self.__botao_reset.interage() == True: #tenho que descobrir uma forma de deixar essa linha melhor e utilizável para mais botões
       self.reset()
 
     self.__grupo_pilulas.draw(screen)

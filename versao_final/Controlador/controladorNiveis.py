@@ -12,13 +12,20 @@ import constantes as c
 class ControladorNiveis:
   def __init__(self):
     self.carregar_niveis()
-    self.__niveis=[self.__nivel_1, self.__nivel_2, self.__nivel_3]
+    self.__niveis = [self.__nivel_1, self.__nivel_2, self.__nivel_3]
     self.__index_nivel_atual = 0
-    self.__nivel_atual = self.__nivel_1
+    self.__nivel_atual = self.__niveis[self.__index_nivel_atual]
   
   @property
   def nivel_atual(self):
     return self.__nivel_atual
+  
+  @property
+  def index_nivel_atual(self):
+    return self.__index_nivel_atual
+  
+  def eh_ultimo_nivel(self):
+    return self.__index_nivel_atual == len(self.__niveis) - 1
   
   def pegar_proximo_nivel(self):
     self.__index_nivel_atual += 1
