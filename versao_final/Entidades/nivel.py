@@ -1,8 +1,9 @@
+from Visualizacao.visualizacaoBase import VisualizacaoBase
 import pygame
 from Entidades.camera import Camera
 from Entidades.botao import Botao
 
-class Nivel:
+class Nivel(VisualizacaoBase):
   def __init__(self, background, bandeirinha, pilulas = [], caixas = [], inimigos = [], blocos = []):
     self.__pilulas = pilulas
     self.__caixas = caixas
