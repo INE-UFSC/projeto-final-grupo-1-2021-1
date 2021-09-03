@@ -1,14 +1,15 @@
 import pygame
 from Entidades.camera import Camera
+from Entidades.botao import Botao
 
 class Nivel:
-  def __init__(self, background, bandeirinha, pilulas = [], caixas = [], inimigos = [], blocos = [], botoes = []):
+  def __init__(self, background, bandeirinha, pilulas = [], caixas = [], inimigos = [], blocos = []):
     self.__pilulas = pilulas
     self.__caixas = caixas
     self.__inimigos = inimigos
     self.__blocos = blocos
     self.__bandeirinha = bandeirinha
-    self.__botoes = botoes
+    self.__botoes = [Botao(754,0,'images/restart.png')]
     self.__background = pygame.image.load(background).convert()
 
     self.__grupo_pilulas = pygame.sprite.Group()

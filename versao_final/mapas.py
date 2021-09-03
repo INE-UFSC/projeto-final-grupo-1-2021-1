@@ -9,10 +9,6 @@ from Entidades.nivel import Nivel
 from Entidades.botao import Botao
 import constantes as c
 
-pygame.init()
-pygame.display.set_caption("√ Variável")
-tela_principal = pygame.display.set_mode((c.largura_tela, c.altura_tela))
-
 #fase1
 background_nivel_1 = 'images/fase1.png'
 bandeirinha_nivel_1 = Bandeirinha(c.bandeirinha, 470)

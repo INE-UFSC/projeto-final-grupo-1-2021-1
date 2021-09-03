@@ -1,26 +1,26 @@
 import pygame
 from Entidades.jogador import Jogador
+from Controlador.controladorNiveis import ControladorNiveis
 import constantes as c
 
 class ControladorJogo:
-  def __init__(self, tela, niveis):
+  def __init__(self):
+    pygame.init()
+    pygame.display.set_caption("√ Variável")
+    self.__tela = pygame.display.set_mode((c.largura_tela, c.altura_tela))
+
     self.__jogador = Jogador()
-    self.__niveis = niveis
-    self.__index_nivel_atual = 0
-    self.__nivel = niveis[self.__index_nivel_atual]
-    self.__tela = tela
+    self.__controladorNiveis = ControladorNiveis()
+    self.__nivel = self.__controladorNiveis.nivel_atual
     self.__running = True
     self.__relogio = pygame.time.Clock()
     self.__canvas = pygame.Surface((c.largura_background, c.altura_background))
 
-    for nivel in self.__niveis:
-      nivel.inserir_jogador(self.__jogador)
+    self.__nivel.inserir_jogador(self.__jogador)
 
   def passar_nivel(self):
-    self.__index_nivel_atual += 1
-    if self.__index_nivel_atual == len(self.__niveis):
-      self.__index_nivel_atual = 0
-    self.__nivel = self.__niveis[self.__index_nivel_atual]
+    self.__nivel = self.__controladorNiveis.pegar_proximo_nivel()
+    self.__nivel.inserir_jogador(self.__jogador)
     self.__nivel.reset()
   
   def iniciar(self):
