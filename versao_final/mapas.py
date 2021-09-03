@@ -6,6 +6,7 @@ from Entidades.bloco import Bloco
 from Entidades.inimigoVermelho import InimigoVermelho
 from Entidades.inimigoLaranja import InimigoLaranja
 from Entidades.nivel import Nivel
+from Entidades.botao import Botao
 import constantes as c
 
 pygame.init()
@@ -40,12 +41,18 @@ blocos_nivel_1 = [
     Bloco(50, 50, 2280, 420)
 
 ]
+
+botoes = [
+    Botao(754,0,'images/restart.png')
+]
+
 bandeirinha_nivel_1 = Bandeirinha(2600, 470)
 bandeirinha_nivel_2 = Bandeirinha(600, 470)
 
 background_nivel_2 = 'images/fase2.png'
 
-nivel_1 = Nivel(background_nivel_1, bandeirinha_nivel_1, pilulas_nivel_1, caixas_nivel_1, inimigos_nivel_1, blocos_nivel_1)
-nivel_2 = Nivel(background_nivel_2, bandeirinha_nivel_2)
+
+nivel_1 = Nivel(background_nivel_1, bandeirinha_nivel_1, pilulas_nivel_1, caixas_nivel_1, inimigos_nivel_1, blocos_nivel_1, botoes= botoes)
+nivel_2 = Nivel(background_nivel_2, bandeirinha_nivel_2, botoes= botoes)
 
 niveis = [nivel_1, nivel_2]
