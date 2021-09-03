@@ -3,68 +3,76 @@ from Entidades.camera import Camera
 
 class Nivel:
   def __init__(self, background, bandeirinha, pilulas = [], caixas = [], inimigos = [], blocos = [], botoes = []):
-    self.pilulas = pilulas
-    self.caixas = caixas
-    self.inimigos = inimigos
-    self.blocos = blocos
-    self.bandeirinha = bandeirinha
-    self.botoes = botoes
-    self.background = pygame.image.load(background).convert()
+    self.__pilulas = pilulas
+    self.__caixas = caixas
+    self.__inimigos = inimigos
+    self.__blocos = blocos
+    self.__bandeirinha = bandeirinha
+    self.__botoes = botoes
+    self.__background = pygame.image.load(background).convert()
 
-    self.grupo_pilulas = pygame.sprite.Group()
-    self.grupo_caixas= pygame.sprite.Group()
-    self.grupo_inimigos = pygame.sprite.Group()
-    self.grupo_blocos = pygame.sprite.Group()
-    self.grupo_bandeirinha = pygame.sprite.Group()
-    self.grupo_botoes = pygame.sprite.Group()
+    self.__grupo_pilulas = pygame.sprite.Group()
+    self.__grupo_caixas= pygame.sprite.Group()
+    self.__grupo_inimigos = pygame.sprite.Group()
+    self.__grupo_blocos = pygame.sprite.Group()
+    self.__grupo_bandeirinha = pygame.sprite.Group()
+    self.__grupo_botoes = pygame.sprite.Group()
 
-    self.grupo_pilulas.add(self.pilulas)
-    self.grupo_caixas.add(self.caixas)
-    self.grupo_inimigos.add(self.inimigos)
-    self.grupo_blocos.add(self.blocos)
-    self.grupo_bandeirinha.add(self.bandeirinha)
-    self.grupo_botoes.add(self.botoes)
+    self.__grupo_pilulas.add(self.__pilulas)
+    self.__grupo_caixas.add(self.__caixas)
+    self.__grupo_inimigos.add(self.__inimigos)
+    self.__grupo_blocos.add(self.__blocos)
+    self.__grupo_bandeirinha.add(self.__bandeirinha)
+    self.__grupo_botoes.add(self.__botoes)
+  
+  @property
+  def bandeirinha(self):
+    return self.__bandeirinha
+  
+  @property
+  def camera(self):
+    return self.__camera
   
   def inserir_jogador(self, jogador):
-    self.jogador = jogador
-    self.camera = Camera(self.jogador)
+    self.__jogador = jogador
+    self.__camera = Camera(self.__jogador)
 
   def reset(self):
-    self.grupo_pilulas.empty()
-    self.grupo_caixas.empty()
-    self.grupo_inimigos.empty()
-    self.grupo_blocos.empty()
-    self.grupo_botoes.empty()
+    self.__grupo_pilulas.empty()
+    self.__grupo_caixas.empty()
+    self.__grupo_inimigos.empty()
+    self.__grupo_blocos.empty()
+    self.__grupo_botoes.empty()
 
-    self.grupo_pilulas.add(self.pilulas)
-    self.grupo_caixas.add(self.caixas)
-    self.grupo_inimigos.add(self.inimigos)
-    self.grupo_blocos.add(self.blocos)
-    self.grupo_botoes.add(self.botoes)
+    self.__grupo_pilulas.add(self.__pilulas)
+    self.__grupo_caixas.add(self.__caixas)
+    self.__grupo_inimigos.add(self.__inimigos)
+    self.__grupo_blocos.add(self.__blocos)
+    self.__grupo_botoes.add(self.__botoes)
 
-    self.jogador.reset()
-    self.camera.reset()
+    self.__jogador.reset()
+    self.__camera.reset()
   
   def update(self, screen):
-    self.jogador.update(self.grupo_caixas, self.grupo_pilulas, self.grupo_blocos)
-    self.camera.scroll()
+    self.__jogador.update(self.__grupo_caixas, self.__grupo_pilulas, self.__grupo_blocos)
+    self.__camera.scroll()
 
-    self.grupo_inimigos.update()
-    self.grupo_botoes.update(self.camera)
+    self.__grupo_inimigos.update()
+    self.__grupo_botoes.update(self.__camera)
     
-    if pygame.sprite.spritecollide(self.jogador, self.grupo_inimigos, False):
+    if pygame.sprite.spritecollide(self.__jogador, self.__grupo_inimigos, False):
       self.reset()
     
-    screen.blit(self.background, (0, 0))
-    screen.blit(self.jogador.superficie, (self.jogador.rect.x, self.jogador.rect.y))
+    screen.blit(self.__background, (0, 0))
+    screen.blit(self.__jogador.superficie, (self.__jogador.rect.x, self.__jogador.rect.y))
 
     
-    if self.botoes[0].interage() == True: #tenho que descobrir uma forma de deixar essa linha melhor e utilizável para mais botões
+    if self.__botoes[0].interage() == True: #tenho que descobrir uma forma de deixar essa linha melhor e utilizável para mais botões
       self.reset()
 
-    self.grupo_pilulas.draw(screen)
-    self.grupo_inimigos.draw(screen)
-    self.grupo_caixas.draw(screen)
-    self.grupo_blocos.draw(screen)
-    self.grupo_bandeirinha.draw(screen)
-    self.grupo_botoes.draw(screen)
+    self.__grupo_pilulas.draw(screen)
+    self.__grupo_inimigos.draw(screen)
+    self.__grupo_caixas.draw(screen)
+    self.__grupo_blocos.draw(screen)
+    self.__grupo_bandeirinha.draw(screen)
+    self.__grupo_botoes.draw(screen)

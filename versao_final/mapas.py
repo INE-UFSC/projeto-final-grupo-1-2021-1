@@ -58,6 +58,6 @@ background_nivel_3 = 'images/fase3.png'
 
 nivel_1 = Nivel(background_nivel_1, bandeirinha_nivel_1, pilulas_nivel_1, caixas_nivel_1, inimigos_nivel_1, blocos_nivel_1, botoes= botoes)
 nivel_2 = Nivel(background_nivel_2, bandeirinha_nivel_2, botoes= botoes)
-nivel_3 = Nivel(background_nivel_3, bandeirinha_nivel_3)
+nivel_3 = Nivel(background_nivel_3, bandeirinha_nivel_3, botoes=botoes)
 
 niveis = [nivel_1, nivel_2, nivel_3]

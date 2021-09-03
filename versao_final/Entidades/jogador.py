@@ -3,23 +3,34 @@ import constantes as c
 
 class Jogador:
   def __init__(self):
-    self.tamanho = c.tamanho_inicial_jogador
-    self.x = c.largura_tela/2 - self.tamanho/2
-    self.y = c.altura_tela - 30 - self.tamanho
-    self.pulo = 0
-    self.superficie = pygame.Surface((self.tamanho, self.tamanho))
-    self.superficie.fill('Purple')
-    self.rect = self.superficie.get_rect(bottomleft = (self.x, self.y))
-    self.tamanho_min = 10
-    self.tamanho_max = 100
-    self.tamanho_pulo = (15*self.tamanho - 2400)/90
-    self.pulou = False
-    self.velocidade = -(self.tamanho_pulo/3)
+    self.__tamanho = c.tamanho_inicial_jogador
+    self.__x = c.largura_tela/2 - self.__tamanho/2
+    self.__y = c.altura_tela - 30 - self.__tamanho
+    self.__pulo = 0
+    self.__superficie = pygame.Surface((self.__tamanho, self.__tamanho))
+    self.__superficie.fill('Purple')
+    self.__rect = self.__superficie.get_rect(bottomleft = (self.__x, self.__y))
+    self.__tamanho_min = 10
+    self.__tamanho_max = 100
+    self.__tamanho_pulo = (15*self.__tamanho - 2400)/90
+    self.__pulou = False
+    self.__velocidade = -(self.__tamanho_pulo/3)
 
+  @property
+  def rect(self):
+    return self.__rect
+  
+  @property
+  def superficie(self):
+    return self.__superficie
+  
+  @property
+  def tamanho(self):
+    return self.__tamanho
 
   def pular(self):
-    if self.rect.y == self.y:
-      self.pulo = self.tamanho_pulo
+    if self.__rect.y == self.__y:
+      self.__pulo = self.__tamanho_pulo
     
   def update(self, caixas, pilulas, blocos):
     dx = 0
@@ -31,64 +42,64 @@ class Jogador:
       dx += 5
     if keys[pygame.K_a]:
       dx -= 5
-    if keys[pygame.K_w] and not self.pulou:
-      self.pulo = self.tamanho_pulo
-      self.pulou = True
+    if keys[pygame.K_w] and not self.__pulou:
+      self.__pulo = self.__tamanho_pulo
+      self.__pulou = True
 
-    self.pulo += 1
-    if self.pulo > 10:
-      self.pulo = 10
+    self.__pulo += 1
+    if self.__pulo > 10:
+      self.__pulo = 10
 
-    dy += self.pulo
+    dy += self.__pulo
 
     for caixa in caixas:
       #Colisão no eixo x
-      if caixa.rect.colliderect(self.rect.x + dx, self.rect.y, self.tamanho, self.tamanho):
+      if caixa.rect.colliderect(self.__rect.x + dx, self.__rect.y, self.__tamanho, self.__tamanho):
         dx = 0
-        if self.tamanho > caixa.forca_necessaria:
+        if self.__tamanho > caixa.forca_necessaria:
           caixas.remove(caixa)
       #Colisão no eixo y
-      if caixa.rect.colliderect(self.rect.x, self.rect.y + dy, self.tamanho, self.tamanho):
+      if caixa.rect.colliderect(self.__rect.x, self.__rect.y + dy, self.__tamanho, self.__tamanho):
         #Colisão quando está pulando
-        if self.pulo < 0:
-            dy = caixa.rect.bottom - self.rect.top
-            self.pulo = 0
+        if self.__pulo < 0:
+            dy = caixa.rect.bottom - self.__rect.top
+            self.__pulo = 0
         #Colisão quando está caindo
-        elif self.pulo >= 0:
-            dy = caixa.rect.top - self.rect.bottom
-            self.pulo = 0
-            self.pulou = False
+        elif self.__pulo >= 0:
+            dy = caixa.rect.top - self.__rect.bottom
+            self.__pulo = 0
+            self.__pulou = False
     
     for bloco in blocos:
       #Colisão no eixo x
-      if bloco.rect.colliderect(self.rect.x + dx, self.rect.y, self.tamanho, self.tamanho):
+      if bloco.rect.colliderect(self.__rect.x + dx, self.__rect.y, self.__tamanho, self.__tamanho):
         dx = 0
       #Colisão no eixo y
-      if bloco.rect.colliderect(self.rect.x, self.rect.y + dy, self.tamanho, self.tamanho):
+      if bloco.rect.colliderect(self.__rect.x, self.__rect.y + dy, self.__tamanho, self.__tamanho):
         #Colisão quando está pulando
-        if self.pulo < 0:
-            dy = bloco.rect.bottom - self.rect.top
-            self.pulo = 0
+        if self.__pulo < 0:
+            dy = bloco.rect.bottom - self.__rect.top
+            self.__pulo = 0
         #Colisão quando está caindo
-        elif self.pulo >= 0:
-            dy = bloco.rect.top - self.rect.bottom
-            self.pulo = 0
-            self.pulou = False
+        elif self.__pulo >= 0:
+            dy = bloco.rect.top - self.__rect.bottom
+            self.__pulo = 0
+            self.__pulou = False
     
     for pilula in pilulas:
-      if pilula.rect.colliderect(self.rect.x + dx, self.rect.y + dy, self.tamanho, self.tamanho):
+      if pilula.rect.colliderect(self.__rect.x + dx, self.__rect.y + dy, self.__tamanho, self.__tamanho):
         self.toma_pilula(pilula)
         pilulas.remove(pilula)
 
-    self.rect.x += dx
-    self.rect.y += dy
+    self.__rect.x += dx
+    self.__rect.y += dy
 
 
-    if self.rect.y > self.y:
-      self.rect.y = self.y
-      self.pulou = False
-    if self.rect.x > c.largura_background - self.tamanho:
-      self.rect.x = c.largura_background - self.tamanho
+    if self.__rect.y > self.__y:
+      self.__rect.y = self.__y
+      self.__pulou = False
+    if self.__rect.x > c.largura_background - self.__tamanho:
+      self.__rect.x = c.largura_background - self.__tamanho
 
   def toma_pilula(self, pilula):
       if pilula.reseta_tamanho:
@@ -99,22 +110,22 @@ class Jogador:
       self.mudar_velocidade()
         
   def mudar_tamanho(self, reseta, tamanho = 10):
-    if self.tamanho + tamanho < self.tamanho_min or self.tamanho + tamanho > self.tamanho_max:
+    if self.__tamanho + tamanho < self.__tamanho_min or self.__tamanho + tamanho > self.__tamanho_max:
       return
     
     if reseta:
-      self.tamanho = self.tamanho_min
+      self.__tamanho = self.__tamanho_min
     else:
-      self.tamanho += tamanho
+      self.__tamanho += tamanho
 
-    self.y = c.altura_tela - 30 - self.tamanho
-    self.superficie = pygame.Surface((self.tamanho, self.tamanho))
-    self.rect = self.superficie.get_rect(bottomleft = (self.rect.x, self.rect.y + self.tamanho))
-    self.superficie.fill('Purple')
-    self.tamanho_pulo = (15*self.tamanho - 2400)/90
+    self.__y = c.altura_tela - 30 - self.__tamanho
+    self.__superficie = pygame.Surface((self.__tamanho, self.__tamanho))
+    self.__rect = self.__superficie.get_rect(bottomleft = (self.__rect.x, self.__rect.y + self.__tamanho))
+    self.__superficie.fill('Purple')
+    self.__tamanho_pulo = (15*self.__tamanho - 2400)/90
   
   def mudar_velocidade(self):
-    self.velocidade = -(self.tamanho_pulo/3)
+    self.__velocidade = -(self.__tamanho_pulo/3)
 
   def reset(self):
     self.__init__()

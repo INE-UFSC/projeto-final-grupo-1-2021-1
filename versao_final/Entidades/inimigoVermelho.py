@@ -3,15 +3,15 @@ from Entidades.inimigo import Inimigo
 class InimigoVermelho(Inimigo):
     def __init__(self, x, y, distancia_maxima = 200, pulo = -10, cor = "Red", velocidade = 2, largura = 70, altura = 50):
         super().__init__(cor, velocidade, largura, altura, x, y, distancia_maxima)
-        self.pulo = pulo
+        self.__pulo = pulo
 
     def update(self):
-        self.pulo += 1
-        if self.pulo > 10:
-            self.pulo = 10
-        self.rect.y += self.pulo
+        self.__pulo += 1
+        if self.__pulo > 10:
+            self.__pulo = 10
+        self.rect.y += self.__pulo
         if self.rect.y >= self.y - self.altura:
-            self.pulo = -10
+            self.__pulo = -10
             self.rect.y = self.y - self.altura
         self.rect.x += self.velocidade
         self.distancia += self.velocidade

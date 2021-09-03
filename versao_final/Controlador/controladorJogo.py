@@ -4,43 +4,43 @@ import constantes as c
 
 class ControladorJogo:
   def __init__(self, tela, niveis):
-    self.jogador = Jogador()
-    self.niveis = niveis
-    self.index_nivel_atual = 0
-    self.nivel = niveis[self.index_nivel_atual]
-    self.tela = tela
-    self.running = True
-    self.relogio = pygame.time.Clock()
-    self.canvas = pygame.Surface((c.largura_background, c.altura_background))
+    self.__jogador = Jogador()
+    self.__niveis = niveis
+    self.__index_nivel_atual = 0
+    self.__nivel = niveis[self.__index_nivel_atual]
+    self.__tela = tela
+    self.__running = True
+    self.__relogio = pygame.time.Clock()
+    self.__canvas = pygame.Surface((c.largura_background, c.altura_background))
 
-    for nivel in self.niveis:
-      nivel.inserir_jogador(self.jogador)
+    for nivel in self.__niveis:
+      nivel.inserir_jogador(self.__jogador)
 
   def passar_nivel(self):
-    self.index_nivel_atual += 1
-    if self.index_nivel_atual == len(self.niveis):
-      self.index_nivel_atual = 0
-    self.nivel = self.niveis[self.index_nivel_atual]
-    self.nivel.reset()
+    self.__index_nivel_atual += 1
+    if self.__index_nivel_atual == len(self.__niveis):
+      self.__index_nivel_atual = 0
+    self.__nivel = self.__niveis[self.__index_nivel_atual]
+    self.__nivel.reset()
   
   def iniciar(self):
-    while self.running:
-      self.relogio.tick(60)
+    while self.__running:
+      self.__relogio.tick(60)
 
       for event in pygame.event.get():
           if event.type == pygame.QUIT:
-            self.running = False
+            self.__running = False
 
           #Passa de nível quando aperta-se k, é obviamente provisório, só para ver se funciona
           if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_k:
               self.passar_nivel()
 
-      if self.nivel.bandeirinha.rect.colliderect(self.jogador.rect.x , self.jogador.rect.y , self.jogador.tamanho, self.jogador.tamanho):
+      if self.__nivel.bandeirinha.rect.colliderect(self.__jogador.rect.x , self.__jogador.rect.y , self.__jogador.tamanho, self.__jogador.tamanho):
         self.passar_nivel()
 
       
-      self.nivel.update(self.canvas)
-      self.tela.blit(self.canvas,(self.nivel.camera.offset.x, 0))
+      self.__nivel.update(self.__canvas)
+      self.__tela.blit(self.__canvas,(self.__nivel.camera.offset.x, 0))
 
       pygame.display.update()
