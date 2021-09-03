@@ -5,6 +5,9 @@ class InimigoLaranja(Inimigo):
         super().__init__(cor, velocidade, largura, altura, x, y, distancia_maxima)
 
     def update(self):
+        self.andar()
+    
+    def andar(self):
         self.rect.x += self.velocidade
         self.distancia += self.velocidade
         if abs(self.distancia) > self.distancia_maxima:

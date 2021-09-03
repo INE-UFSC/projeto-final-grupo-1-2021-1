@@ -6,6 +6,9 @@ class InimigoVermelho(Inimigo):
         self.__pulo = pulo
 
     def update(self):
+        self.andar_pulando()
+    
+    def andar_pulando(self):
         self.__pulo += 1
         if self.__pulo > 10:
             self.__pulo = 10
