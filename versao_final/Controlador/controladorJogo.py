@@ -24,7 +24,7 @@ class ControladorJogo:
 
     self.__tela_inicial = TelaInicial()
     self.__tela_transicao_nivel = TelaTransicaoNivel()
-    self.__tela_vitoria = TelaVitoria()
+    self.__tela_vitoria = TelaVitoria(self.__controladorNiveis.niveis)
   
     self.__estados = [self.__tela_inicial, self.__nivel, self.__tela_transicao_nivel, self.__tela_vitoria]
     self.__index_estado_atual = c.estado_tela_inicial

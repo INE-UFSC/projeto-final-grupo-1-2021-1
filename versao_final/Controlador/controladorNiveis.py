@@ -24,6 +24,10 @@ class ControladorNiveis:
   def index_nivel_atual(self):
     return self.__index_nivel_atual
   
+  @property
+  def niveis(self):
+    return self.__niveis
+  
   def eh_ultimo_nivel(self):
     return self.__index_nivel_atual == len(self.__niveis) - 1
   
