@@ -32,7 +32,7 @@ class Jogador:
     if self.__rect.y == self.__y:
       self.__pulo = self.__tamanho_pulo
     
-  def update(self, caixas, pilulas, blocos):
+  def update(self, caixas, pilulas, blocos, caixas_quebradas):
     dx = 0
     dy = 0
     
@@ -58,6 +58,8 @@ class Jogador:
         dx = 0
         if self.__tamanho > caixa.forca_necessaria:
           caixas.remove(caixa)
+          caixa.quebrar()
+          caixas_quebradas.add(caixa)
       #Colisão no eixo y
       if caixa.rect.colliderect(self.__rect.x, self.__rect.y + dy, self.__tamanho, self.__tamanho):
         #Colisão quando está pulando

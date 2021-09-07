@@ -10,11 +10,12 @@ class Nivel(VisualizacaoBase):
     self.__inimigos = inimigos
     self.__blocos = blocos
     self.__bandeirinha = bandeirinha
-    self.__botao_reset = Botao(754,0,'images/restart.png')
+    self.__botao_reset = Botao(750, 5,'images/restart.png')
     self.__background = pygame.image.load(background).convert()
 
     self.__grupo_pilulas = pygame.sprite.Group()
-    self.__grupo_caixas= pygame.sprite.Group()
+    self.__grupo_caixas = pygame.sprite.Group()
+    self.__grupo_caixas_quebradas = pygame.sprite.Group()
     self.__grupo_inimigos = pygame.sprite.Group()
     self.__grupo_blocos = pygame.sprite.Group()
     self.__grupo_bandeirinha = pygame.sprite.Group()
@@ -56,10 +57,11 @@ class Nivel(VisualizacaoBase):
     self.__camera.reset()
   
   def update(self, screen):
-    self.__jogador.update(self.__grupo_caixas, self.__grupo_pilulas, self.__grupo_blocos)
+    self.__jogador.update(self.__grupo_caixas, self.__grupo_pilulas, self.__grupo_blocos, self.__grupo_caixas_quebradas)
     self.__camera.scroll()
 
     self.__grupo_inimigos.update()
+    self.__grupo_caixas_quebradas.update()
     self.__grupo_botoes.update(self.__camera)
     
     if pygame.sprite.spritecollide(self.__jogador, self.__grupo_inimigos, False):
@@ -77,6 +79,7 @@ class Nivel(VisualizacaoBase):
     self.__grupo_pilulas.draw(screen)
     self.__grupo_inimigos.draw(screen)
     self.__grupo_caixas.draw(screen)
+    self.__grupo_caixas_quebradas.draw(screen)
     self.__grupo_blocos.draw(screen)
     self.__grupo_bandeirinha.draw(screen)
     self.__grupo_botoes.draw(screen)

@@ -42,7 +42,7 @@ class ControladorNiveis:
     self.__background_nivel_1 = 'images/fase1.png'
     self.__bandeirinha_nivel_1 = Bandeirinha(c.bandeirinha, 470)
     self.__caixas_nivel_1 = [
-        Caixa(150, 50, 1900, 470, 100),
+        Caixa(150, 50, 1900, 470, 2),
         Caixa(50, 50, 2230, 470, 40),
     ]
     self.__inimigos_nivel_1 = [
@@ -67,12 +67,32 @@ class ControladorNiveis:
         Bloco(50, 50, 2280, 420)
 
     ]
-    self.__nivel_1 = Nivel(self.__background_nivel_1, self.__bandeirinha_nivel_1, self.__pilulas_nivel_1, self.__caixas_nivel_1, self.__inimigos_nivel_1, self.__blocos_nivel_1)
+
+    self.__nivel_1 = Nivel(
+      self.__background_nivel_1,
+      self.__bandeirinha_nivel_1,
+      self.__pilulas_nivel_1,
+      self.__caixas_nivel_1,
+      self.__inimigos_nivel_1,
+      self.__blocos_nivel_1
+    )
 
   def carregar_nivel_2(self):
+    self.__caixas_nivel_2 = [
+      Caixa(50, 50, 600, 470, 40),
+      Caixa(100, 50, 700, 470, 40),
+      Caixa(150, 50, 800, 470, 40),
+      Caixa(50, 100, 900, 470, 40),
+      Caixa(200, 100, 1100, 470, 55),
+    ]
+
     self.__bandeirinha_nivel_2 = Bandeirinha(c.bandeirinha, 470)
     self.__background_nivel_2 = 'images/fase2.png'
-    self.__nivel_2 = Nivel(self.__background_nivel_2, self.__bandeirinha_nivel_2)
+    self.__nivel_2 = Nivel(
+      self.__background_nivel_2,
+      self.__bandeirinha_nivel_2,
+      caixas=self.__caixas_nivel_2
+    )
 
   def carregar_nivel_3(self):
     self.__bandeirinha_nivel_3 = Bandeirinha(c.bandeirinha, 470)

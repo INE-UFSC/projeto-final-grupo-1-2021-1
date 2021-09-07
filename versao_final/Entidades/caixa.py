@@ -5,13 +5,26 @@ class Caixa(pygame.sprite.Sprite):
         pygame.sprite.Sprite.__init__(self)
         self.__altura = altura
         self.__largura = largura
+        self.__forca_necessaria = forca_necessaria
         self.__x = x
         self.__y = y
-        self.__superficie = pygame.Surface((self.__largura, self.__altura))
-        self.__superficie.fill('Brown')
-        self.__rect = self.__superficie.get_rect(bottomleft = (self.__x, self.__y))
-        self.__image = self.__superficie
-        self.__forca_necessaria = forca_necessaria
+
+        self.__index_imagem = 0
+        self.__imgs = []
+        for i in range(0, 9):
+            self.__imgs.append(
+                pygame.transform.smoothscale(
+                    pygame.image.load(f'images/caixa-{i}.png').convert_alpha(), 
+                    (self.__largura, self.__altura))
+            )
+
+        self.__image = pygame.transform.smoothscale(self.__imgs[self.__index_imagem], (self.__largura, self.__altura))
+        self.__rect = self.__image.get_rect()
+        self.__rect.bottomleft = (x, y)
+        self.__quebrada = False
+
+        self.__ultimo_update = pygame.time.get_ticks()
+        self.__taxa_atualizacao = 60
     
     @property
     def rect(self):
@@ -24,3 +37,19 @@ class Caixa(pygame.sprite.Sprite):
     @property
     def image(self):
         return self.__image
+    
+    def quebrar(self):
+        self.__quebrada = True
+    
+    def update(self):
+        agora = pygame.time.get_ticks()
+
+        if self.__quebrada and (agora - self.__ultimo_update > self.__taxa_atualizacao):
+            self.__ultimo_update = agora
+            self.__index_imagem += 1
+
+            if self.__index_imagem >= 8:
+                self.__index_imagem = 8
+                self.__quebrada = False
+        
+        self.__image = pygame.transform.smoothscale(self.__imgs[self.__index_imagem], (self.__largura, self.__altura))
