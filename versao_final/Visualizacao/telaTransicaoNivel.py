@@ -4,14 +4,14 @@ from Visualizacao.visualizacaoBase import VisualizacaoBase
 
 class TelaTransicaoNivel(VisualizacaoBase):
   def __init__(self):
+    super().__init__()
     self.__background = pygame.image.load('images/fase_concluida.png').convert()
     self.__tecla_pressionada = False
 
-    self.__fonte = pygame.font.SysFont('Roboto', 30)
     self.__texto = ""
     self.__continuacao = "Pressione espaço para continuar"
-    self.__superficie_texto = self.__fonte.render(self.__texto, True, (0, 0, 0))
-    self.__superficie_texto_continuacao = self.__fonte.render(self.__continuacao, True, (0, 0, 0))
+    self.__superficie_texto = self.fonte.render(self.__texto, True, (0, 0, 0))
+    self.__superficie_texto_continuacao = self.fonte.render(self.__continuacao, True, (0, 0, 0))
   
   def update(self, screen):
     keys = pygame.key.get_pressed()
@@ -29,4 +29,4 @@ class TelaTransicaoNivel(VisualizacaoBase):
   
   def atualiza_texto(self, texto):
     self.__texto = texto
-    self.__superficie_texto = self.__fonte.render(self.__texto, True, (0, 0, 0))
+    self.__superficie_texto = self.fonte.render(self.__texto, True, (0, 0, 0))

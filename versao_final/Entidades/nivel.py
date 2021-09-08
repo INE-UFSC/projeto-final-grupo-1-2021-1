@@ -1,5 +1,6 @@
 import pygame
 from Visualizacao.visualizacaoBase import VisualizacaoBase
+from Entidades.tempo import Tempo
 from Entidades.camera import Camera
 from Entidades.botao import Botao
 
@@ -12,7 +13,8 @@ class Nivel(VisualizacaoBase):
     self.__bandeirinha = bandeirinha
     self.__botao_reset = Botao(750, 5,'images/restart.png')
     self.__background = pygame.image.load(background).convert()
-    self.__reset_timer = False
+    self.__tempo = Tempo()
+    self.__comecou_agora = True
 
     self.__grupo_pilulas = pygame.sprite.Group()
     self.__grupo_caixas = pygame.sprite.Group()
@@ -38,14 +40,15 @@ class Nivel(VisualizacaoBase):
     return self.__camera
 
   @property
-  def reset_timer(self):
-    return self.__reset_timer
+  def tempo(self):
+    return self.__tempo.segundos
   
   def inserir_jogador(self, jogador):
     self.__jogador = jogador
     self.__camera = Camera(self.__jogador)
 
   def reset(self):
+    self.__comecou_agora = True
     self.__grupo_caixas_quebradas.update(resetar=True)
 
     self.__grupo_pilulas.empty()
@@ -63,23 +66,28 @@ class Nivel(VisualizacaoBase):
 
     self.__jogador.reset()
     self.__camera.reset()
-    self.__reset_timer = True
+    self.__tempo.reset_timer()
   
   def update(self, screen):
+    if self.__comecou_agora:
+      self.__tempo.reset_timer()
+      self.__comecou_agora = False
+
     self.__jogador.update(self.__grupo_caixas, self.__grupo_pilulas, self.__grupo_blocos, self.__grupo_caixas_quebradas)
     self.__camera.scroll()
 
     self.__grupo_inimigos.update()
     self.__grupo_caixas_quebradas.update()
     self.__grupo_botoes.update(self.__camera)
-    self.__reset_timer = False
+    self.__tempo.update(self.__camera)
+    self.__tempo.contar()
     
     if pygame.sprite.spritecollide(self.__jogador, self.__grupo_inimigos, False):
       self.reset()
     
     if self.__bandeirinha.rect.colliderect(self.__jogador.rect.x , self.__jogador.rect.y , self.__jogador.tamanho, self.__jogador.tamanho):
       return True # Jogador concluiu nível
-    
+
     screen.blit(self.__background, (0, 0))
     screen.blit(self.__jogador.superficie, (self.__jogador.rect.x, self.__jogador.rect.y))
     
@@ -93,3 +101,4 @@ class Nivel(VisualizacaoBase):
     self.__grupo_blocos.draw(screen)
     self.__grupo_bandeirinha.draw(screen)
     self.__grupo_botoes.draw(screen)
+    self.__tempo.draw(screen)

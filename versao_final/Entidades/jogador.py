@@ -14,7 +14,6 @@ class Jogador:
     self.__tamanho_max = 100
     self.__tamanho_pulo = (15*self.__tamanho - 2400)/90
     self.__pulou = False
-    self.__velocidade = -(self.__tamanho_pulo/3)
 
   @property
   def rect(self):
@@ -96,7 +95,6 @@ class Jogador:
     self.__rect.x += dx
     self.__rect.y += dy
 
-
     if self.__rect.y > self.__y:
       self.__rect.y = self.__y
       self.__pulou = False
@@ -108,8 +106,6 @@ class Jogador:
         self.mudar_tamanho(True)
       else:
         self.mudar_tamanho(False, pilula.efeito)
-        
-      self.mudar_velocidade()
         
   def mudar_tamanho(self, reseta, tamanho = 10):
     if self.__tamanho + tamanho < self.__tamanho_min or self.__tamanho + tamanho > self.__tamanho_max:
@@ -125,9 +121,6 @@ class Jogador:
     self.__rect = self.__superficie.get_rect(bottomleft = (self.__rect.x, self.__rect.y + self.__tamanho))
     self.__superficie.fill('Purple')
     self.__tamanho_pulo = (15*self.__tamanho - 2400)/90
-  
-  def mudar_velocidade(self):
-    self.__velocidade = -(self.__tamanho_pulo/3)
 
   def reset(self):
     self.__init__()

@@ -4,12 +4,12 @@ import constantes as c
 
 class TelaInicial(VisualizacaoBase):
   def __init__(self):
+    super().__init__()
     self.__background = pygame.image.load('images/tela_inicial.png').convert()
     self.__tecla_pressionada = False
 
-    self.__fonte = pygame.font.SysFont('Roboto', 30)
     self.__texto = "Pressione espaço para começar"
-    self.__superficie_texto = self.__fonte.render(self.__texto, True, (0, 0, 0))
+    self.__superficie_texto = self.fonte.render(self.__texto, True, (0, 0, 0))
 
   def update(self, screen):
     keys = pygame.key.get_pressed()
