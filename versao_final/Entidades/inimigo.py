@@ -11,10 +11,9 @@ class Inimigo(ABC, pygame.sprite.Sprite):
         self.__distancia_maxima = distancia_maxima
         self.__x = x
         self.__y = y
-        self.__superficie = pygame.Surface((self.__largura, self.__altura))
-        self.__superficie.fill(self.__cor)
-        self.__rect = self.__superficie.get_rect(bottomleft = (self.__x, self.__y))
-        self.__image = self.__superficie
+        img = pygame.image.load(f'images/inimigo{self.__cor}.png')
+        self.__image = pygame.transform.scale(img, (self.__largura, self.__altura))
+        self.__rect = self.__image.get_rect(bottomleft = (self.__x, self.__y))
         self.__distancia = 0
     
     @property

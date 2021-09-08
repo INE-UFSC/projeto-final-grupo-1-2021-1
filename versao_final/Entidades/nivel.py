@@ -89,7 +89,7 @@ class Nivel(VisualizacaoBase):
       return True # Jogador concluiu nível
 
     screen.blit(self.__background, (0, 0))
-    screen.blit(self.__jogador.superficie, (self.__jogador.rect.x, self.__jogador.rect.y))
+    screen.blit(self.__jogador.image, (self.__jogador.rect.x, self.__jogador.rect.y))
     
     if self.__botao_reset.interage() == True: #tenho que descobrir uma forma de deixar essa linha melhor e utilizável para mais botões
       self.reset()

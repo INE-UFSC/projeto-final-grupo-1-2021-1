@@ -7,9 +7,9 @@ class Jogador:
     self.__x = c.largura_tela/2 - self.__tamanho/2
     self.__y = c.altura_tela - 30 - self.__tamanho
     self.__pulo = 0
-    self.__superficie = pygame.Surface((self.__tamanho, self.__tamanho))
-    self.__superficie.fill('Purple')
-    self.__rect = self.__superficie.get_rect(bottomleft = (self.__x, self.__y))
+    img = pygame.image.load(f'images/jogador.png')
+    self.__image = pygame.transform.scale(img, (self.__tamanho, self.__tamanho))
+    self.__rect = self.__image.get_rect(bottomleft = (self.__x, self.__y))
     self.__tamanho_min = 10
     self.__tamanho_max = 100
     self.__tamanho_pulo = (15*self.__tamanho - 2400)/90
@@ -20,8 +20,8 @@ class Jogador:
     return self.__rect
   
   @property
-  def superficie(self):
-    return self.__superficie
+  def image(self):
+    return self.__image
   
   @property
   def tamanho(self):
@@ -117,9 +117,9 @@ class Jogador:
       self.__tamanho += tamanho
 
     self.__y = c.altura_tela - 30 - self.__tamanho
-    self.__superficie = pygame.Surface((self.__tamanho, self.__tamanho))
-    self.__rect = self.__superficie.get_rect(bottomleft = (self.__rect.x, self.__rect.y + self.__tamanho))
-    self.__superficie.fill('Purple')
+    img = pygame.image.load(f'images/jogador.png')
+    self.__image = pygame.transform.scale(img, (self.__tamanho, self.__tamanho))
+    self.__rect = self.__image.get_rect(bottomleft = (self.__rect.x, self.__rect.y + self.__tamanho))
     self.__tamanho_pulo = (15*self.__tamanho - 2400)/90
 
   def reset(self):
