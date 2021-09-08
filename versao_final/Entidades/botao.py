@@ -12,7 +12,7 @@ class Botao(pygame.sprite.Sprite):
         self.__y = y
         self.__rect.y = self.__y
         self.__clickado = False
-    
+
     @property
     def rect(self):
         return self.__rect
@@ -34,5 +34,5 @@ class Botao(pygame.sprite.Sprite):
 
         if pygame.mouse.get_pressed()[0] == 0:
             self.__clickado = False
-        
+
         return acao

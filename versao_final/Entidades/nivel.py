@@ -1,5 +1,5 @@
-from Visualizacao.visualizacaoBase import VisualizacaoBase
 import pygame
+from Visualizacao.visualizacaoBase import VisualizacaoBase
 from Entidades.camera import Camera
 from Entidades.botao import Botao
 
@@ -12,6 +12,7 @@ class Nivel(VisualizacaoBase):
     self.__bandeirinha = bandeirinha
     self.__botao_reset = Botao(750, 5,'images/restart.png')
     self.__background = pygame.image.load(background).convert()
+    self.__reset_timer = False
 
     self.__grupo_pilulas = pygame.sprite.Group()
     self.__grupo_caixas = pygame.sprite.Group()
@@ -35,6 +36,10 @@ class Nivel(VisualizacaoBase):
   @property
   def camera(self):
     return self.__camera
+
+  @property
+  def reset_timer(self):
+    return self.__reset_timer
   
   def inserir_jogador(self, jogador):
     self.__jogador = jogador
@@ -58,6 +63,7 @@ class Nivel(VisualizacaoBase):
 
     self.__jogador.reset()
     self.__camera.reset()
+    self.__reset_timer = True
   
   def update(self, screen):
     self.__jogador.update(self.__grupo_caixas, self.__grupo_pilulas, self.__grupo_blocos, self.__grupo_caixas_quebradas)
@@ -66,6 +72,7 @@ class Nivel(VisualizacaoBase):
     self.__grupo_inimigos.update()
     self.__grupo_caixas_quebradas.update()
     self.__grupo_botoes.update(self.__camera)
+    self.__reset_timer = False
     
     if pygame.sprite.spritecollide(self.__jogador, self.__grupo_inimigos, False):
       self.reset()
