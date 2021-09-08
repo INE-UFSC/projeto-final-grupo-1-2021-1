@@ -41,8 +41,11 @@ class Nivel(VisualizacaoBase):
     self.__camera = Camera(self.__jogador)
 
   def reset(self):
+    self.__grupo_caixas_quebradas.update(resetar=True)
+
     self.__grupo_pilulas.empty()
     self.__grupo_caixas.empty()
+    self.__grupo_caixas_quebradas.empty()
     self.__grupo_inimigos.empty()
     self.__grupo_blocos.empty()
     self.__grupo_botoes.empty()

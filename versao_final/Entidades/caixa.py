@@ -41,7 +41,11 @@ class Caixa(pygame.sprite.Sprite):
     def quebrar(self):
         self.__quebrada = True
     
-    def update(self):
+    def estado_inicial(self):
+        self.__quebrada = False
+        self.__index_imagem = 0
+    
+    def animacao_quebrar(self):
         agora = pygame.time.get_ticks()
 
         if self.__quebrada and (agora - self.__ultimo_update > self.__taxa_atualizacao):
@@ -50,6 +54,11 @@ class Caixa(pygame.sprite.Sprite):
 
             if self.__index_imagem >= 8:
                 self.__index_imagem = 8
-                self.__quebrada = False
         
         self.__image = pygame.transform.smoothscale(self.__imgs[self.__index_imagem], (self.__largura, self.__altura))
+    
+    def update(self, resetar = False):
+        if resetar:
+            self.estado_inicial()
+
+        self.animacao_quebrar()
