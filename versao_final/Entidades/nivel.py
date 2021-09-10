@@ -79,6 +79,7 @@ class Nivel(VisualizacaoBase):
     self.__grupo_inimigos.update()
     self.__grupo_caixas_quebradas.update()
     self.__grupo_botoes.update(self.__camera)
+    self.__grupo_bandeirinha.update()
     self.__tempo.update(self.__camera)
     self.__tempo.contar()
     
