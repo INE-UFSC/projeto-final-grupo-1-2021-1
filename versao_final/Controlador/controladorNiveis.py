@@ -6,7 +6,6 @@ from Entidades.bloco import Bloco
 from Entidades.inimigoVermelho import InimigoVermelho
 from Entidades.inimigoLaranja import InimigoLaranja
 from Entidades.nivel import Nivel
-from Entidades.botao import Botao
 import constantes as c
 
 class ControladorNiveis:
