@@ -1,10 +1,10 @@
+from Visualizacao.telaRanking import TelaRanking
 from Visualizacao.telaVitoria import TelaVitoria
 from Visualizacao.telaTransicaoNivel import TelaTransicaoNivel
 import pygame
 from Visualizacao.telaInicial import TelaInicial
 from Entidades.jogador import Jogador
 from Controlador.controladorNiveis import ControladorNiveis
-from Entidades.tempo import Tempo
 import constantes as c
 
 class ControladorJogo:
@@ -26,8 +26,9 @@ class ControladorJogo:
     self.__tela_inicial = TelaInicial()
     self.__tela_transicao_nivel = TelaTransicaoNivel()
     self.__tela_vitoria = TelaVitoria(self.__controladorNiveis.niveis)
+    self.__tela_ranking = TelaRanking()
   
-    self.__estados = [self.__tela_inicial, self.__nivel, self.__tela_transicao_nivel, self.__tela_vitoria]
+    self.__estados = [self.__tela_inicial, self.__nivel, self.__tela_transicao_nivel, self.__tela_vitoria, self.__tela_ranking]
     self.__index_estado_atual = c.estado_tela_inicial
     self.__estado_atual = self.__estados[self.__index_estado_atual]
 
@@ -50,6 +51,9 @@ class ControladorJogo:
     elif self.__index_estado_atual == c.estado_transicao_nivel:
       self.__index_estado_atual = c.estado_jogando_nivel
     elif self.__index_estado_atual == c.estado_vitoria:
+      print('era pra ir pro ranking')
+      self.__index_estado_atual = c.estado_ranking
+    elif self.__index_estado_atual == c.estado_ranking:
       self.__index_estado_atual = c.estado_tela_inicial
     
     self.__estado_atual = self.__estados[self.__index_estado_atual]

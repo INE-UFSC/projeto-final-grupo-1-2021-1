@@ -10,7 +10,7 @@ class TelaVitoria(VisualizacaoBase):
     self.__tecla_pressionada = False
     self.__primeira_aparicao = True
 
-    self.__continuacao = "Pressione espaço para voltar a tela inicial"
+    self.__continuacao = "Pressione espaço para continuar"
     self.__superficie_texto_continuacao = self.fonte.render(self.__continuacao, True, (0, 0, 0))
 
     self.__texto_tempo = "Tempo total"

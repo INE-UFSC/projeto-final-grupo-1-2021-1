@@ -8,4 +8,5 @@ estado_tela_inicial = 0
 estado_jogando_nivel = 1
 estado_transicao_nivel = 2
 estado_vitoria = 3
+estado_ranking = 4
 transforma_segundos = 1000
