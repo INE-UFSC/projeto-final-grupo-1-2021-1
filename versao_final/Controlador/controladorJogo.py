@@ -51,7 +51,6 @@ class ControladorJogo:
     elif self.__index_estado_atual == c.estado_transicao_nivel:
       self.__index_estado_atual = c.estado_jogando_nivel
     elif self.__index_estado_atual == c.estado_vitoria:
-      print('era pra ir pro ranking')
       self.__index_estado_atual = c.estado_ranking
     elif self.__index_estado_atual == c.estado_ranking:
       self.__index_estado_atual = c.estado_tela_inicial

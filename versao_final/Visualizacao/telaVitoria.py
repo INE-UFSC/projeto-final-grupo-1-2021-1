@@ -1,3 +1,4 @@
+from Entidades.RankingDAO import RankingDAO
 import pygame
 import constantes as c
 from Visualizacao.visualizacaoBase import VisualizacaoBase
@@ -5,6 +6,7 @@ from Visualizacao.visualizacaoBase import VisualizacaoBase
 class TelaVitoria(VisualizacaoBase):
   def __init__(self, niveis):
     super().__init__()
+    self.__ranking_dao = RankingDAO()
     self.__niveis = niveis
     self.__background = pygame.image.load('images/vitoria.png').convert()
     self.__tecla_pressionada = False
@@ -72,3 +74,5 @@ class TelaVitoria(VisualizacaoBase):
       total += nivel.tempo
     self.__tempo = f"{total} segundos"
     self.__superficie_tempo = self.fonte.render(self.__tempo, True, (0, 0, 0))
+
+    self.__ranking_dao.add_tempo(total)
