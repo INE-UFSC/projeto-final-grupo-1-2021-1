@@ -1,7 +1,7 @@
 from Entidades.inimigo import Inimigo
 
 class InimigoVermelho(Inimigo):
-    def __init__(self, x, y, distancia_maxima = 200, pulo = -10, cor = "Vermelho", velocidade = 2, largura = 40, altura = 50):
+    def __init__(self, x, y, distancia_maxima = 200, pulo = -10, cor = "Vermelho", velocidade = 2, largura = 40, altura = 70):
         super().__init__(cor, velocidade, largura, altura, x, y, distancia_maxima)
         self.__pulo = pulo
 

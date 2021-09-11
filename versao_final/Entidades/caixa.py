@@ -20,7 +20,7 @@ class Caixa(pygame.sprite.Sprite):
 
         self.__image = pygame.transform.smoothscale(self.__imgs[self.__index_imagem], (self.__largura, self.__altura))
         self.__rect = self.__image.get_rect()
-        self.__rect.bottomleft = (x, y)
+        self.__rect.topleft = (x, y)
         self.__quebrada = False
 
         self.__ultimo_update = pygame.time.get_ticks()

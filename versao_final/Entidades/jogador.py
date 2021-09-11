@@ -55,7 +55,7 @@ class Jogador:
       #Colisão no eixo x
       if caixa.rect.colliderect(self.__rect.x + dx, self.__rect.y, self.__tamanho, self.__tamanho):
         dx = 0
-        if self.__tamanho > caixa.forca_necessaria:
+        if self.__tamanho >= caixa.forca_necessaria:
           caixas.remove(caixa)
           caixa.quebrar()
           caixas_quebradas.add(caixa)
