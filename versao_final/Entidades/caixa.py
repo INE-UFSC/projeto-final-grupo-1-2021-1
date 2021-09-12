@@ -52,8 +52,8 @@ class Caixa(pygame.sprite.Sprite):
             self.__ultimo_update = agora
             self.__index_imagem += 1
 
-            if self.__index_imagem >= 8:
-                self.__index_imagem = 8
+            if self.__index_imagem >= len(self.__imgs) - 1:
+                self.__index_imagem = len(self.__imgs) - 1
         
         self.__image = pygame.transform.smoothscale(self.__imgs[self.__index_imagem], (self.__largura, self.__altura))
     
