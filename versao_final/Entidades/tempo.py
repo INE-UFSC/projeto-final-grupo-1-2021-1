@@ -28,5 +28,5 @@ class Tempo():
         self.__x = -camera.offset.x + 10
 
     def draw(self, screen):
-        texto_tempo = self.__fonte_tempo.render(f"Tempo: {self.__segundos}", True, (0,0,0))
+        texto_tempo = self.__fonte_tempo.render(f"Tempo: {self.__segundos}", True, (99, 100, 102))
         screen.blit(texto_tempo, (self.__x, 10))
