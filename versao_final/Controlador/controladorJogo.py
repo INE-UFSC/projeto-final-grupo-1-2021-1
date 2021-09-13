@@ -32,6 +32,8 @@ class ControladorJogo:
     self.__index_estado_atual = c.estado_tela_inicial
     self.__estado_atual = self.__estados[self.__index_estado_atual]
 
+    self.__som_passou_fase = pygame.mixer.Sound('sounds/completouFase.wav')
+
   def passar_nivel(self):
     self.__nivel = self.__controladorNiveis.pegar_proximo_nivel()
     self.__nivel.inserir_jogador(self.__jogador)
@@ -41,15 +43,19 @@ class ControladorJogo:
   def proximo_estado(self):
     if self.__index_estado_atual == c.estado_tela_inicial:
       self.__index_estado_atual = c.estado_jogando_nivel
+      self.__nivel.som(str(self.__controladorNiveis.index_nivel_atual))       #Parte do som de background
     elif self.__index_estado_atual == c.estado_jogando_nivel:
+      self.__nivel.pause_som()                                                #Parte do som de background 
       if self.__controladorNiveis.eh_ultimo_nivel():
         self.__index_estado_atual = c.estado_vitoria
       else:
         self.__tela_transicao_nivel.atualiza_texto(f'Você concluiu com exito o nível {self.__controladorNiveis.index_nivel_atual + 1}')
         self.__index_estado_atual = c.estado_transicao_nivel
       self.passar_nivel()
+      pygame.mixer.Sound.play(self.__som_passou_fase)
     elif self.__index_estado_atual == c.estado_transicao_nivel:
       self.__index_estado_atual = c.estado_jogando_nivel
+      self.__nivel.som(str(self.__controladorNiveis.index_nivel_atual))       #Parte do som de background
     elif self.__index_estado_atual == c.estado_vitoria:
       self.__index_estado_atual = c.estado_ranking
     elif self.__index_estado_atual == c.estado_ranking:

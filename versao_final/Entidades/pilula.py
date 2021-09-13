@@ -12,6 +12,7 @@ class Pilula(pygame.sprite.Sprite):
         self.__image = pygame.transform.scale(img, (29 , 34))
         self.__rect = self.__image.get_rect()
         self.__rect.center = (x, y)
+        self.__som_pilula = pygame.mixer.Sound('sounds/pilulas.wav')
     
     @property
     def rect(self):
@@ -28,3 +29,6 @@ class Pilula(pygame.sprite.Sprite):
     @property
     def reseta_tamanho(self):
         return self.__reseta_tamanho
+    
+    def som(self):
+        pygame.mixer.Sound.play(self.__som_pilula)

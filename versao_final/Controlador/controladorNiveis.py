@@ -217,7 +217,7 @@ class ControladorNiveis:
 
     self.__pilulas_nivel_3 =[ 
       Pilula('blue', -10, False, 20, 430), Pilula('blue', -10, False, 1370, 400), Pilula('blue', -10, False, 1340, 260),
-      Pilula('red', 10, False, 3410, 155), Pilula('red', 10, False, 6055, 420), Pilula('green', -10, True, 6410, 80),
+      Pilula('red', 10, False, 3410, 155), Pilula('red', 10, False, 6055, 420), Pilula('green', -10, True, 6410, 100),
       Pilula('red', 10, False, 7225, 430), Pilula('red', 10, False, 7385, 430), Pilula('blue', -10, False, 7620, 255),
       Pilula('blue', -10, False, 8410, 285), Pilula('blue', -10, False, 8685, 295)
     ]
@@ -225,12 +225,12 @@ class ControladorNiveis:
     self.__inimigos_nivel_3 = [ 
       InimigoLaranja(1050, 470, 230), InimigoVermelho(1350, 470, 340,-13), InimigoLaranja(1730,470, 235) ,InimigoVermelho(2035,470,315,-15), InimigoVermelho(2390,470,270),
       InimigoLaranja(2700, 470, 265), InimigoLaranja(3250, 470, 320), InimigoLaranja(3640, 470, 290), InimigoVermelho(4150, 380, 160),
-      InimigoLaranja(4405,80,0, velocidade= 0), InimigoVermelho(4810, 470, 325), InimigoLaranja(5175, 470, 385), InimigoVermelho(5710, 470, 450),
-      InimigoLaranja(6200, 470, 540), InimigoLaranja(6810, 470, 245), InimigoVermelho(7410, 470, 295, -24), InimigoVermelho(7745,470,395,-24),
-      InimigoVermelho(9150,470, 240)
+      InimigoLaranja(4415,80,0, velocidade= 0), InimigoVermelho(4810, 470, 325), InimigoLaranja(5175, 470, 385), InimigoVermelho(5710, 470, 450),
+      InimigoLaranja(6200, 470, 540), InimigoLaranja(6810, 470, 295), InimigoVermelho(7410, 470, 295, -24), InimigoVermelho(7745,470,395,-24),
+      InimigoVermelho(9150,470, 240), InimigoVermelho(8350, 470, 600, -30, "bossV", largura=150, altura=150)
     ]
 
-    self.__nivel_3 = Nivel(self.__background_nivel_3, self.__bandeirinha_nivel_3, self.__pilulas_nivel_3 , self.__caixas_nivel_3 , self.__inimigos_nivel_3 ,blocos= self.__blocos_nivel_3)
+    self.__nivel_3 = Nivel(self.__background_nivel_3, self.__bandeirinha_nivel_3, self.__pilulas_nivel_3 , self.__caixas_nivel_3 , self.__inimigos_nivel_3 , self.__blocos_nivel_3)
 
   def carregar_niveis(self):
     self.carregar_nivel_1()

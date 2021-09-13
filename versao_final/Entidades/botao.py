@@ -12,6 +12,7 @@ class Botao(pygame.sprite.Sprite):
         self.__y = y
         self.__rect.y = self.__y
         self.__clickado = False
+        self.__som_click = pygame.mixer.Sound('sounds/click.wav')
 
     @property
     def rect(self):
@@ -31,6 +32,7 @@ class Botao(pygame.sprite.Sprite):
             if pygame.mouse.get_pressed()[0] == 1 and self.__clickado == False:
                 acao = True
                 self.__clickado = True
+                pygame.mixer.Sound.play(self.__som_click)
 
         if pygame.mouse.get_pressed()[0] == 0:
             self.__clickado = False

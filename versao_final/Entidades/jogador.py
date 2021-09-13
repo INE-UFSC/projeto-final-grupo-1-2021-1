@@ -14,6 +14,8 @@ class Jogador:
     self.__tamanho_max = 100
     self.__tamanho_pulo = (15*self.__tamanho - 2400)/90
     self.__pulou = False
+    self.__som_pulo = pygame.mixer.Sound('sounds/pulo.wav')
+    self.__som_morte = pygame.mixer.Sound('sounds/morte.wav')
 
   @property
   def rect(self):
@@ -30,6 +32,9 @@ class Jogador:
   def pular(self):
     if self.__rect.y == self.__y:
       self.__pulo = self.__tamanho_pulo
+  
+  def som_morte(self):
+    pygame.mixer.Sound.play(self.__som_morte)
     
   def update(self, caixas, pilulas, blocos, caixas_quebradas):
     dx = 0
@@ -44,6 +49,7 @@ class Jogador:
     if keys[pygame.K_w] and not self.__pulou:
       self.__pulo = self.__tamanho_pulo
       self.__pulou = True
+      pygame.mixer.Sound.play(self.__som_pulo)
 
     self.__pulo += 1
     if self.__pulo > 10:
@@ -90,6 +96,7 @@ class Jogador:
     for pilula in pilulas:
       if pilula.rect.colliderect(self.__rect.x + dx, self.__rect.y + dy, self.__tamanho, self.__tamanho):
         self.toma_pilula(pilula)
+        pilula.som()
         pilulas.remove(pilula)
 
     self.__rect.x += dx

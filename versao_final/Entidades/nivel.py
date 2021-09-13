@@ -30,7 +30,7 @@ class Nivel(VisualizacaoBase):
     self.__grupo_blocos.add(self.__blocos)
     self.__grupo_bandeirinha.add(self.__bandeirinha)
     self.__grupo_botoes.add(self.__botao_reset)
-  
+
   @property
   def bandeirinha(self):
     return self.__bandeirinha
@@ -46,6 +46,13 @@ class Nivel(VisualizacaoBase):
   def inserir_jogador(self, jogador):
     self.__jogador = jogador
     self.__camera = Camera(self.__jogador)
+
+  def som(self, num): #Parte do som de background
+    pygame.mixer.music.load(f"sounds/MusicaFase{num}.mp3")
+    pygame.mixer.music.play(-1)
+
+  def pause_som(self): #Parte do som de background
+    pygame.mixer.music.pause()
 
   def reset(self):
     self.__comecou_agora = True
@@ -84,6 +91,7 @@ class Nivel(VisualizacaoBase):
     self.__tempo.contar()
     
     if pygame.sprite.spritecollide(self.__jogador, self.__grupo_inimigos, False):
+      self.__jogador.som_morte()
       self.reset()
     
     if self.__bandeirinha.rect.colliderect(self.__jogador.rect.x , self.__jogador.rect.y , self.__jogador.tamanho, self.__jogador.tamanho):
