@@ -1,8 +1,8 @@
 from Entidades.inimigo import Inimigo
 
 class InimigoVermelho(Inimigo):
-    def __init__(self, x, y, distancia_maxima = 200, pulo = -10, cor = "Vermelho", velocidade = 2, largura = 40, altura = 70):
-        super().__init__(cor, velocidade, largura, altura, x, y, distancia_maxima)
+    def __init__(self, x, y, distancia_maxima = 200, pulo = -10, cor = "Vermelho", velocidade = 2, largura = 40, altura = 70, mutante = False):
+        super().__init__(cor, velocidade, largura, altura, x, y, distancia_maxima, mutante)
         self.__pulo = pulo
         self.__pulobase = pulo
 
