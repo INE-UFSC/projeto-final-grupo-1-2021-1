@@ -81,7 +81,7 @@ class Nivel(VisualizacaoBase):
       self.__tempo.reset_timer()
       self.__comecou_agora = False
 
-    self.__jogador.update(self.__grupo_caixas, self.__grupo_pilulas, self.__grupo_blocos, self.__grupo_caixas_quebradas)
+    self.__jogador.update(self.__grupo_caixas, self.__grupo_blocos, self.__grupo_caixas_quebradas)
     self.__camera.scroll()
 
     self.__grupo_inimigos.update()
@@ -91,12 +91,10 @@ class Nivel(VisualizacaoBase):
     self.__tempo.update(self.__camera)
     self.__tempo.contar()
     
-    if pygame.sprite.spritecollide(self.__jogador, self.__grupo_inimigos, False):
-      self.__jogador.som_morte()
-      self.reset()
-    
     if self.__bandeirinha.rect.colliderect(self.__jogador.rect.x , self.__jogador.rect.y , self.__jogador.tamanho, self.__jogador.tamanho):
       return True # Jogador concluiu nível
+    
+    self.colisao()
 
     screen.blit(self.__background, (0, 0))
     screen.blit(self.__jogador.image, (self.__jogador.rect.x, self.__jogador.rect.y))
@@ -112,3 +110,19 @@ class Nivel(VisualizacaoBase):
     self.__grupo_bandeirinha.draw(screen)
     self.__grupo_botoes.draw(screen)
     self.__tempo.draw(screen)
+  
+  def colisao(self):
+    self.colisao_inimigo()
+    self.colisao_pilula()
+  
+  def colisao_inimigo(self):
+    if pygame.sprite.spritecollide(self.__jogador, self.__grupo_inimigos, False):
+      self.__jogador.som_morte()
+      self.reset()
+  
+  def colisao_pilula(self):
+    for pilula in self.__grupo_pilulas:
+      if pilula.rect.colliderect(self.__jogador.rect.x, self.__jogador.rect.y, self.__jogador.tamanho, self.__jogador.tamanho):
+        self.__jogador.toma_pilula(pilula)
+        pilula.som()
+        self.__grupo_pilulas.remove(pilula)

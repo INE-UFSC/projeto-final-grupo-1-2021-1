@@ -36,7 +36,7 @@ class Jogador:
   def som_morte(self):
     pygame.mixer.Sound.play(self.__som_morte)
     
-  def update(self, caixas, pilulas, blocos, caixas_quebradas):
+  def update(self, caixas, blocos, caixas_quebradas):
     dx = 0
     dy = 0
     
@@ -60,7 +60,10 @@ class Jogador:
     for caixa in caixas:
       #Colisão no eixo x
       if caixa.rect.colliderect(self.__rect.x + dx, self.__rect.y, self.__tamanho, self.__tamanho):
-        dx = 0
+        if dx > 0:
+          dx = caixa.rect.left - self.__rect.right
+        if dx < 0:
+          dx = caixa.rect.right - self.__rect.left
         if self.__tamanho >= caixa.forca_necessaria:
           caixas.remove(caixa)
           caixa.quebrar()
@@ -80,7 +83,10 @@ class Jogador:
     for bloco in blocos:
       #Colisão no eixo x
       if bloco.rect.colliderect(self.__rect.x + dx, self.__rect.y, self.__tamanho, self.__tamanho):
-        dx = 0
+        if dx > 0:
+          dx = bloco.rect.left - self.__rect.right
+        if dx < 0:
+          dx = bloco.rect.right - self.__rect.left
       #Colisão no eixo y
       if bloco.rect.colliderect(self.__rect.x, self.__rect.y + dy, self.__tamanho, self.__tamanho):
         #Colisão quando está pulando
@@ -92,12 +98,6 @@ class Jogador:
             dy = bloco.rect.top - self.__rect.bottom
             self.__pulo = 0
             self.__pulou = False
-    
-    for pilula in pilulas:
-      if pilula.rect.colliderect(self.__rect.x + dx, self.__rect.y + dy, self.__tamanho, self.__tamanho):
-        self.toma_pilula(pilula)
-        pilula.som()
-        pilulas.remove(pilula)
 
     self.__rect.x += dx
     self.__rect.y += dy

@@ -101,7 +101,7 @@ class ControladorNiveis:
       y += 50
 
     self.__blocos_nivel_1 = [
-        Bloco(825, 325), Bloco(1891, 98), Bloco(1891, 148), Bloco(1891, 198),
+        Bloco(825, 420), Bloco(1891, 98), Bloco(1891, 148), Bloco(1891, 198),
         Bloco(1891, 321), Bloco(1941, 321), Bloco(1991, 370), Bloco(2041, 420),
         Bloco(2676, 290), Bloco(2595, 173), Bloco(2745, 173), Bloco(2883, 173),
         Bloco(3206, 173), Bloco(3305, 173), Bloco(3232, 290), Bloco(3729, 270),
