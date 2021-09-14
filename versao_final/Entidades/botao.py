@@ -1,5 +1,4 @@
 import pygame
-import constantes as c
 from Entidades.camera import Camera
 
 class Botao(pygame.sprite.Sprite):
