@@ -48,7 +48,8 @@ class Nivel(VisualizacaoBase):
     self.__camera = Camera(self.__jogador)
 
   def som(self, num): #Parte do som de background
-    pygame.mixer.music.load(f"sounds/MusicaFase{num}.mp3")
+    pygame.mixer.music.load(f"sounds/MusicaFase{num}.wav")
+    pygame.mixer.music.set_volume(0.3)
     pygame.mixer.music.play(-1)
 
   def pause_som(self): #Parte do som de background

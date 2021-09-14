@@ -1,7 +1,7 @@
+import pygame
 from Visualizacao.telaRanking import TelaRanking
 from Visualizacao.telaVitoria import TelaVitoria
 from Visualizacao.telaTransicaoNivel import TelaTransicaoNivel
-import pygame
 from Visualizacao.telaInicial import TelaInicial
 from Entidades.jogador import Jogador
 from Controlador.controladorNiveis import ControladorNiveis

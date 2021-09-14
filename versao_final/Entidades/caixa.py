@@ -8,7 +8,7 @@ class Caixa(pygame.sprite.Sprite):
         self.__forca_necessaria = forca_necessaria
         self.__x = x
         self.__y = y
-        self.__som_caixa = pygame.mixer.Sound('sounds/caixaQuebrando.mp3')
+        self.__som_caixa = pygame.mixer.Sound('sounds/caixaQuebrando.wav')
 
         self.__index_imagem = 0
         self.__imgs = []

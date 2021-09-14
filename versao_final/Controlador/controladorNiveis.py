@@ -11,7 +11,7 @@ import constantes as c
 class ControladorNiveis:
   def __init__(self):
     self.carregar_niveis()
-    self.__niveis = [self.__nivel_1, self.__nivel_2, self.__nivel_3]
+    self.__niveis = [self.__nivel_1, self.__nivel_2, self.__nivel_3, ]
     self.__index_nivel_atual = 0
     self.__nivel_atual = self.__niveis[self.__index_nivel_atual]
   
@@ -57,9 +57,9 @@ class ControladorNiveis:
         *coluna_caixas_grandes,
     ]
     self.__inimigos_nivel_1 = [
-        InimigoVermelho(823, 470, 400), InimigoVermelho(3784, 270),
+        InimigoVermelho(865, 470, distancia_maxima=350), InimigoVermelho(3784, 270),
         InimigoVermelho(5966, 390, distancia_maxima=450, pulo=-15),
-        InimigoVermelho(4710, 470, distancia_maxima=600, pulo=-20),
+        InimigoVermelho(4710, 470, distancia_maxima=600, pulo=-17),
         InimigoLaranja(2705, 470), InimigoLaranja(3070, 470, velocidade=8),
         InimigoLaranja(5662, 390, distancia_maxima=170, velocidade=5),
         InimigoLaranja(4015, 270, distancia_maxima=200),
@@ -370,7 +370,7 @@ class ControladorNiveis:
       InimigoLaranja(2700, 470, 265), InimigoLaranja(3250, 470, 320), InimigoLaranja(3640, 470, 290), InimigoVermelho(4150, 380, 160),
       InimigoLaranja(4415,80,0, velocidade= 0), InimigoVermelho(4810, 470, 325), InimigoLaranja(5175, 470, 385), InimigoVermelho(5710, 470, 450),
       InimigoLaranja(6200, 470, 540), InimigoLaranja(6810, 470, 295), InimigoVermelho(7410, 470, 295, -24), InimigoVermelho(7745,470,395,-24),
-      InimigoVermelho(9150,470, 240), InimigoVermelho(8350, 470, 600, -30, largura=150, altura=150, mutante=True)
+      InimigoVermelho(9150,470, 240), InimigoVermelho(8350, 470, 600, -22, largura=150, altura=150, mutante=True)
     ]
 
     self.__nivel_3 = Nivel(self.__background_nivel_3, self.__bandeirinha_nivel_3, self.__pilulas_nivel_3 , self.__caixas_nivel_3 , self.__inimigos_nivel_3 , self.__blocos_nivel_3)
