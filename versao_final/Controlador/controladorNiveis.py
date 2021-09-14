@@ -48,20 +48,20 @@ class ControladorNiveis:
       caixa_y += 120
 
     self.__caixas_nivel_1 = [
-        Caixa(50, 50, 1300, 420, 40), Caixa(75, 50, 1891, 247, 40),
-        Caixa(50, 50, 2645, 173, 50), Caixa(50, 50, 2695, 173, 50),
-        Caixa(50, 50, 3156, 173, 10), Caixa(50, 50, 3255, 173, 50),
-        Caixa(50, 50, 3729, 420, 30), Caixa(50, 50, 3990, 100, 50),
-        Caixa(50, 50, 4105, 100, 50), Caixa(50, 50, 6079, 167, 50),
-        Caixa(50, 50, 6199, 167, 50), Caixa(30, 30, 4952, 228, 10),
+        Caixa(50, 50, 1300, 420, 40), Caixa(75, 50, 1890, 245, 40),
+        Caixa(50, 50, 2645, 175, 50), Caixa(50, 50, 2695, 175, 50),
+        Caixa(50, 50, 3155, 175, 10), Caixa(50, 50, 3255, 175, 50),
+        Caixa(50, 50, 3730, 420, 30), Caixa(50, 50, 3990, 100, 50),
+        Caixa(50, 50, 4105, 100, 50), Caixa(50, 50, 6080, 165, 50),
+        Caixa(50, 50, 6200, 165, 50), Caixa(30, 30, 4950, 230, 10),
         *coluna_caixas_grandes,
     ]
     self.__inimigos_nivel_1 = [
         InimigoVermelho(865, 470, distancia_maxima=350), InimigoVermelho(3784, 270),
-        InimigoVermelho(5966, 390, distancia_maxima=450, pulo=-15),
+        InimigoVermelho(5970, 390, distancia_maxima=450, pulo=-15),
         InimigoVermelho(4710, 470, distancia_maxima=600, pulo=-17),
         InimigoLaranja(2705, 470), InimigoLaranja(3070, 470, velocidade=8),
-        InimigoLaranja(5662, 390, distancia_maxima=170, velocidade=5),
+        InimigoLaranja(5665, 390, distancia_maxima=170, velocidade=5),
         InimigoLaranja(4015, 270, distancia_maxima=200),
     ]
 
@@ -82,14 +82,14 @@ class ControladorNiveis:
         Pilula('blue',-10, False, 735, 420),
         Pilula('blue',-10, False, 3920, 400),
         Pilula('blue',-10, False, 5798, 68),
-        Pilula('blue',-10, False, 4977, 180),
+        Pilula('blue',-10, False, 4968, 180),
         Pilula('green',-10, True, 1540, 425),
         Pilula('green',-10, True, 2435, 405),
         *fila_pilulas_vermelhas,
     ]
 
     plataforma = []
-    x = 5507
+    x = 5510
     for i in range(21):
       plataforma.append(Bloco(x, 390))
       x += 50
@@ -97,19 +97,20 @@ class ControladorNiveis:
     coluna = []
     y = 240
     for i in range(3):
-      coluna.append(Bloco(6457, y))
+      coluna.append(Bloco(6460, y))
       y += 50
 
     self.__blocos_nivel_1 = [
-        Bloco(825, 325), Bloco(1891, 98), Bloco(1891, 148), Bloco(1891, 198),
-        Bloco(1891, 321), Bloco(1941, 321), Bloco(1991, 370), Bloco(2041, 420),
-        Bloco(2676, 290), Bloco(2595, 173), Bloco(2745, 173), Bloco(2883, 173),
-        Bloco(3206, 173), Bloco(3305, 173), Bloco(3232, 290), Bloco(3729, 270),
-        Bloco(3729, 320), Bloco(3729, 370), Bloco(3779, 270), Bloco(3829, 270),
-        Bloco(3877, 270), Bloco(3927, 270), Bloco(3977, 270), Bloco(4027, 270),
-        Bloco(4077, 270), Bloco(4127, 270), Bloco(4177, 270), Bloco(4227, 270),
-        Bloco(4275, 222), Bloco(4322, 174), Bloco(4372, 126), Bloco(4421, 126),
-        *plataforma, Bloco(5607, 340), Bloco(5907, 340), Bloco(5740, 141), Bloco(5790, 166),
+        Bloco(825, 325), Bloco(1890, 95), Bloco(1890, 145), Bloco(1890, 195),
+        Bloco(1890, 320), Bloco(1940, 320), Bloco(1990, 370), Bloco(2040, 420),
+        Bloco(2675, 290), Bloco(2595, 175), Bloco(2745, 175), Bloco(2885, 175),
+        Bloco(3205, 175), Bloco(3305, 175), Bloco(3230, 290), Bloco(3730, 270),
+        Bloco(3730, 320), Bloco(3730, 370), Bloco(3780, 270), Bloco(3830, 270),
+        Bloco(3880, 270), Bloco(3930, 270), Bloco(3980, 270), Bloco(4030, 270),
+        Bloco(4080, 270), Bloco(4130, 270), Bloco(4180, 270), Bloco(4230, 270),
+        Bloco(4280, 220), Bloco(4330, 170), Bloco(4380, 120), Bloco(4430, 120),
+        Bloco(4480,120), Bloco(4530, 120),
+        *plataforma, Bloco(5610, 340), Bloco(5910, 340), Bloco(5740, 140), Bloco(5790, 165),
         *coluna
     ]
 
