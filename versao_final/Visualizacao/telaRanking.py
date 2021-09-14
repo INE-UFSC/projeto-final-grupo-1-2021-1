@@ -11,7 +11,7 @@ class TelaRanking(VisualizacaoBase):
     self.__background = pygame.image.load('images/ranking.png').convert()
     self.__tecla_pressionada = True
     self.__continuacao = "Pressione espaço para voltar a tela inicial"
-    self.__superficie_texto_continuacao = self.fonte.render(self.__continuacao, True, (0, 0, 0))
+    self.__superficie_texto_continuacao = self.fonte.render(self.__continuacao, True, (255, 255, 255))
     self.__primeira_aparicao = True
   
   def update(self, screen):
@@ -30,9 +30,9 @@ class TelaRanking(VisualizacaoBase):
       self.__tecla_pressionada = False
     
     screen.blit(self.__background, (0, 0))
-    screen.blit(self.__superficie_texto_continuacao,(c.largura_tela/2 - self.__superficie_texto_continuacao.get_rect().width/2, 440))
+    screen.blit(self.__superficie_texto_continuacao,(c.largura_tela/2 - self.__superficie_texto_continuacao.get_rect().width/2, 470))
 
-    posicao = 192
+    posicao = 188
     for tempo in self.__tempos:
       tempo_texto = f'{tempo} s' if tempo != None else '-'
       superficie_texto = self.fonte.render(f'{tempo_texto}', True, (0, 0, 0))

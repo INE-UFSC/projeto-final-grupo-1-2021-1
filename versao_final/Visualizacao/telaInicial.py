@@ -9,7 +9,7 @@ class TelaInicial(VisualizacaoBase):
     self.__tecla_pressionada = False
 
     self.__texto = "Pressione espaço para começar"
-    self.__superficie_texto = self.fonte.render(self.__texto, True, (0, 0, 0))
+    self.__superficie_texto = self.fonte.render(self.__texto, True, (255, 255, 255))
 
   def update(self, screen):
     keys = pygame.key.get_pressed()

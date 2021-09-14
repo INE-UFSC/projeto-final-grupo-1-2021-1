@@ -12,6 +12,8 @@ class ControladorJogo:
     pygame.init()
     pygame.font.init() 
     pygame.display.set_caption("√ Variável")
+    icon = pygame.image.load("images/jogador.png")
+    pygame.display.set_icon(icon)
     self.__tela = pygame.display.set_mode((c.largura_tela, c.altura_tela))
 
     self.__jogador = Jogador()
