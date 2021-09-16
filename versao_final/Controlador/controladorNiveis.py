@@ -11,7 +11,7 @@ import constantes as c
 class ControladorNiveis:
   def __init__(self):
     self.carregar_niveis()
-    self.__niveis = [self.__nivel_1, self.__nivel_2, self.__nivel_3, ]
+    self.__niveis = [self.__nivel_1, self.__nivel_2, self.__nivel_3]
     self.__index_nivel_atual = 0
     self.__nivel_atual = self.__niveis[self.__index_nivel_atual]
   
@@ -137,7 +137,7 @@ class ControladorNiveis:
     coluna_blocos2 = []
     y = 320
     for i in range(3):
-      coluna_blocos1.append(Bloco(808, y))
+      coluna_blocos1.append(Bloco(810, y))
       coluna_blocos2.append(Bloco(2125, y))
       y += 50
 
@@ -145,12 +145,12 @@ class ControladorNiveis:
     coluna_blocos4 = []
     y = 250
     for i in range(2):
-      coluna_blocos3.append(Bloco(2683, y))
-      coluna_blocos4.append(Bloco(2817, y))
+      coluna_blocos3.append(Bloco(2685, y))
+      coluna_blocos4.append(Bloco(2815, y))
       y += 50
 
     plataforma_blocos1 = []
-    x = 2842
+    x = 2840
     for i in range(4):
       plataforma_blocos1.append(Bloco(x, 350))
       x += 50
@@ -158,7 +158,7 @@ class ControladorNiveis:
     plataforma_blocos2 = []
     plataforma_blocos3 = []
     x1 = 3140
-    x2 = 3539
+    x2 = 3540
     for i in range(6):
       plataforma_blocos2.append(Bloco(x1, 201))
       plataforma_blocos3.append(Bloco(x2, 331))
@@ -167,7 +167,7 @@ class ControladorNiveis:
 
     plataforma_blocos4 = []
     plataforma_blocos5 = []
-    x1 = 3988
+    x1 = 3990
     x2 = 4295
     for i in range(5):
       plataforma_blocos4.append(Bloco(x1, 133))
@@ -182,16 +182,16 @@ class ControladorNiveis:
       x += 50
 
     plataforma_blocos7 = []
-    x = 3957
+    x = 3955
     for i in range(12):
       plataforma_blocos7.append(Bloco(x, 355))
       x += 50
 
     escada_blocos1 = []
     escada_blocos2 = []
-    x1 = 5127
+    x1 = 5125
     y1 = 420
-    x2 = 5807
+    x2 = 5805
     y2 = 120
     for i in range(7):
       escada_blocos1.append(Bloco(x1, y1))
@@ -206,19 +206,19 @@ class ControladorNiveis:
     y = 120
     for i in range(4):
       coluna_blocos5.append(Bloco(5475, y))
-      coluna_blocos6.append(Bloco(5757, y))
+      coluna_blocos6.append(Bloco(5755, y))
       y += 50
 
     coluna_blocos7 = []
     coluna_blocos8 = []
     y = 320
     for i in range(3):
-      coluna_blocos7.append(Bloco(6402, y))
-      coluna_blocos8.append(Bloco(8069, y))
+      coluna_blocos7.append(Bloco(6400, y))
+      coluna_blocos8.append(Bloco(8070, y))
       y += 50
 
     plataforma_blocos8 = []
-    x = 7048
+    x = 7050
     for i in range(8):
       plataforma_blocos8.append(Bloco(x, 234))
       x += 50
@@ -230,22 +230,22 @@ class ControladorNiveis:
       x += 50
 
     self.__caixas_nivel_2 = [
-      Caixa(30, 30, 1140, 112, 5), Caixa(30, 30, 1695, 105, 5), Caixa(50, 50, 3205, 420, 10), Caixa(50, 50, 3861, 420, 50),
-      Caixa(50, 50, 4643, 420, 50), Caixa(30, 30, 6468, 215, 30), Caixa(30, 30, 6607, 96, 30), Caixa(30, 30, 6777, 220, 30),
-      Caixa(30, 30, 6930, 136, 30), Caixa(30, 30, 7102, 63, 30), Caixa(30, 30, 7323, 50, 30), Caixa(30, 30, 6468, 215, 30),
-      Caixa(30, 30, 7511, 125, 30), Caixa(30, 30, 7690, 163, 30), Caixa(30, 30, 7882, 122, 30), Caixa(40, 40, 8630, 430, 40),
-      Caixa(40, 40, 8735, 345, 40), Caixa(40, 40, 8847, 276, 40),*plataforma_caixas
+      Caixa(30, 30, 1140, 112, 5), Caixa(30, 30, 1695, 105, 5), Caixa(50, 50, 3205, 420, 10), Caixa(50, 50, 3860, 420, 50),
+      Caixa(50, 50, 4645, 420, 50), Caixa(30, 30, 6470, 215, 30), Caixa(30, 30, 6605, 96, 30), Caixa(30, 30, 6775, 220, 30),
+      Caixa(30, 30, 6930, 136, 30), Caixa(30, 30, 7100, 63, 30), Caixa(30, 30, 7325, 50, 30), Caixa(30, 30, 6470, 215, 30),
+      Caixa(30, 30, 7510, 125, 30), Caixa(30, 30, 7690, 163, 30), Caixa(30, 30, 7880, 122, 30), Caixa(40, 40, 8630, 430, 40),
+      Caixa(40, 40, 8735, 345, 40), Caixa(40, 40, 8845, 276, 40),*plataforma_caixas
     ]
 
     self.__blocos_nivel_2 =[
-      Bloco(903, 246), Bloco(1023, 179), Bloco(1237, 192), Bloco(1390, 217),
-      Bloco(1520, 138), Bloco(1792, 194), Bloco(1987, 141), Bloco(2441, 420),
-      Bloco(2503, 360), Bloco(2567, 304), Bloco(2633, 250), Bloco(3042, 300),
-      Bloco(3092, 250), Bloco(3103, 420),Bloco(3440, 231), Bloco(3490, 281), 
-      Bloco(3842, 280), Bloco(3155, 370), Bloco(3205, 320), Bloco(3358, 320),
-      Bloco(3408, 370), Bloco(3458, 420),Bloco(3891, 231), Bloco(3939, 182), 
-      Bloco(4557, 305), Bloco(4607, 256),Bloco(4657, 256), Bloco(4707, 302),
-      Bloco(4757, 350), Bloco(9050, 190),Bloco(9320, 158), *plataforma_blocos1, 
+      Bloco(900, 246), Bloco(1025, 179), Bloco(1240, 192), Bloco(1390, 217),
+      Bloco(1520, 138), Bloco(1790, 194), Bloco(1990, 141), Bloco(2440, 420),
+      Bloco(2505, 360), Bloco(2565, 304), Bloco(2635, 250), Bloco(3040, 300),
+      Bloco(3090, 250), Bloco(3105, 420),Bloco(3440, 231), Bloco(3490, 281), 
+      Bloco(3840, 280), Bloco(3155, 370), Bloco(3205, 320), Bloco(3360, 320),
+      Bloco(3410, 370), Bloco(3460, 420),Bloco(3890, 231), Bloco(3940, 182), 
+      Bloco(4555, 305), Bloco(4605, 256),Bloco(4655, 256), Bloco(4705, 302),
+      Bloco(4755, 350), Bloco(9050, 190),Bloco(9320, 158), *plataforma_blocos1, 
       *plataforma_blocos2, *plataforma_blocos3, *plataforma_blocos4, *plataforma_blocos5, 
       *plataforma_blocos6, *plataforma_blocos7, *plataforma_blocos8, *plataforma_blocos9, 
       *coluna_blocos1, *coluna_blocos2, *coluna_blocos3, *coluna_blocos4, *coluna_blocos5, 

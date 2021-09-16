@@ -81,6 +81,7 @@ class Nivel(VisualizacaoBase):
       self.__tempo.reset_timer()
       self.__comecou_agora = False
 
+    self.colisao() # Fica antes do update do jogador para fazer o tomanho crescer de forma agradavel
     self.__jogador.update(self.__grupo_caixas, self.__grupo_blocos, self.__grupo_caixas_quebradas)
     self.__camera.scroll()
 
@@ -94,7 +95,6 @@ class Nivel(VisualizacaoBase):
     if self.__bandeirinha.rect.colliderect(self.__jogador.rect.x , self.__jogador.rect.y , self.__jogador.tamanho, self.__jogador.tamanho):
       return True # Jogador concluiu nível
     
-    self.colisao()
 
     screen.blit(self.__background, (0, 0))
     screen.blit(self.__jogador.image, (self.__jogador.rect.x, self.__jogador.rect.y))

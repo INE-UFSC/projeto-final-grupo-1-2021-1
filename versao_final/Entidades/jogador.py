@@ -7,6 +7,7 @@ class Jogador:
     self.__x = c.largura_tela/2 - self.__tamanho/2
     self.__y = c.altura_tela - 30 - self.__tamanho
     self.__pulo = 0
+    self.__velocidade = c.jogador_velocidade
     img = pygame.image.load(f'images/jogador.png')
     self.__image = pygame.transform.scale(img, (self.__tamanho, self.__tamanho))
     self.__rect = self.__image.get_rect(bottomleft = (self.__x, self.__y))
@@ -43,9 +44,9 @@ class Jogador:
     keys = pygame.key.get_pressed()
 
     if keys[pygame.K_d]:
-      dx += 5
+      dx += self.__velocidade
     if keys[pygame.K_a]:
-      dx -= 5
+      dx -= self.__velocidade
     if keys[pygame.K_w] and not self.__pulou:
       self.__pulo = self.__tamanho_pulo
       self.__pulou = True
@@ -80,10 +81,7 @@ class Jogador:
     for bloco in blocos:
       #Colisão no eixo x
       if bloco.rect.colliderect(self.__rect.x + dx, self.__rect.y, self.__tamanho, self.__tamanho):
-        if dx > 0:
-          dx = bloco.rect.left - self.__rect.right
-        if dx < 0:
-          dx = bloco.rect.right - self.__rect.left
+        dx = 0
       #Colisão no eixo y
       if bloco.rect.colliderect(self.__rect.x, self.__rect.y + dy, self.__tamanho, self.__tamanho):
         #Colisão quando está pulando

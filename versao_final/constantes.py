@@ -1,4 +1,5 @@
 tamanho_inicial_jogador = 50
+jogador_velocidade = 5
 altura_tela = 500
 largura_tela = 800
 altura_background = 500
