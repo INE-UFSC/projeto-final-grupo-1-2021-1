@@ -7,8 +7,8 @@ class Bloco(pygame.sprite.Sprite):
         self.__largura = largura
         self.__x = x
         self.__y = y
-        img = pygame.image.load(f'images/bloco.png')
-        self.__image = pygame.transform.scale(img, (self.__largura, self.__altura))
+        self.__img = pygame.image.load(f'images/bloco.png')
+        self.__image = pygame.transform.scale(self.__img, (self.__largura, self.__altura))
         self.__rect = self.__image.get_rect()
         self.__rect.topleft = (x, y)
     
